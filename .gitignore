@@ -1,0 +1,15 @@
+# Dependency directories
+**/node_modules
+
+# Dist directories - We should not include any bundle/dist files!
+**/dist
+
+# Logs
+*.log
+npm-debug.log*
+
+# ?
+**/MyApplication
+*.swp
+
+valo/src/lib_js/valo_sdk_js/examples/browser/*browser.js
