@@ -174,7 +174,7 @@ The mobile application allows a user to register as a *mobile contributor* in Va
 
 3. Launch IonicView in your mobile.
 
-4. View the application with code: `9ed6fcee`.
+4. View the application with code: `9beb5de9`.
 
 #### Run the MQTT to Valo bridge
 Some of the IoT board may publish events to a MQTT server like `mqtt://iot.eclipse.org`. The *MQTT to Valo bridge* is a script that subscribes to certain channels of the MQTT server and relays the events to a Valo stream.
