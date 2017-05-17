@@ -38,7 +38,7 @@ export class HomePage {
   // Let's just set some geolocation default options
   geolocationOptions = {
     maximumAge: 0,
-    timeout: 10000,
+    timeout: 1000,
     enableHighAccuracy: true
   }
 
@@ -86,7 +86,7 @@ export class HomePage {
   setupGeolocationWatch() {
     if (!this.locationWatch) {
       this.publishLocation();
-      this.locationWatch = setInterval(() => { this.publishLocation() }, 60000);
+      this.locationWatch = setInterval(() => { this.publishLocation() }, 5000);
     }
   }
 
