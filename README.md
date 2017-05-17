@@ -50,7 +50,7 @@ You will need to have installed in your environment:
 
 - **[Babel](https://babeljs.io/)**. A transpiler from Ecmascript2015 and beyond to Ecmascript5. Our examples and code use the latest elegant flavor of Javascript and need this! Although it is installed locally in our local hackathon repository, it is convenient to have it installed globally in our system.
 ~~~shell
-$ npm i --global babel-cli babel-present-env
+$ npm i --global babel-cli babel-preset-env
 ~~~
 
 - One of the following alternatives for sending HTTP requests:
