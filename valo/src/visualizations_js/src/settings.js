@@ -15,7 +15,7 @@ export const TENANT = 'demo';
 // VALO QUERIES
 export const QUERY_MOB_HAPPINESS = `
   from /streams/demo/mobile/happiness
-  select timestamp, contributor.user.typeOfParticipant as typeOfParticipant, position, happiness
+  select timestamp, contributor.user.typeOfParticipant as typeOfParticipant, position, contributor.user.gender
 `;
 export const HISTORICAL_QUERY_MOB_HAPPINESS = `
   from historical /streams/demo/mobile/happiness

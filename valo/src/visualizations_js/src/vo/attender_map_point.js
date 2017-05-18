@@ -52,6 +52,6 @@ import MapPoint from './map_point';
    return new AttenderPoint(
      valoPayload.position.latitude,
      valoPayload.position.longitude,
-     valoPayload.happiness
+     valoPayload.contributor.user.gender
    );
  }
