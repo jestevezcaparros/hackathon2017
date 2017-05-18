@@ -217,61 +217,69 @@ const contributors = [
 
     // MOBILE USERS
     {
-        id : "fake-mobile-user-00001",
+        id : "skill-user-00001",
         contributorType: "mobile_user",
         valoData: {
-            "id" : "fake-mobile-user-00001",
+            "id" : "skill-user-00001",
             "user" : {
-                "name" : "fake-mobile-user-00001",
-                "typeOfParticipant" : "fake organizer",
-                "company" : "FAKE",
+                "name" : "skill-user-00001",
+                "typeOfParticipant" : "organizer",
+                "company" : "VALO.io",
                 "country" : "Spain",
-                "role" : "Developer"
+                "role" : "Developer",
+                "skill" : "Java",
+                "gender" : "javascript"                               
             }
         },
         walkerData : walkerDataConfigs.walkerMobileDefault
     },
     {
-        id : "fake-mobile-user-00002",
+        id : "skill-mobile-user-00002",
         contributorType: "mobile_user",
         valoData: {
-            "id" : "fake-mobile-user-00002",
+            "id" : "skill-mobile-user-00002",
             "user" : {
-                "name" : "fake-mobile-user-00002",
-                "typeOfParticipant" : "fake speaker",
-                "company" : "FAKE",
+                "name" : "skill-mobile-user-00002",
+                "typeOfParticipant" : "speaker",
+                "company" : "VALO.io",
                 "country" : "Spain",
-                "role" : "Developer"
+                "role" : "Developer",
+                "skill" : "Python",
+                "gender" : "java"                                     
             }
         },
         walkerData : walkerDataConfigs.walkerMobileDefault
     },
     {
-        id : "fake-mobile-user-00003",
+        id : "skill-mobile-user-00003",
         contributorType: "mobile_user",
         valoData: {
-            "id" : "fake-mobile-user-00003",
+            "id" : "skill-mobile-user-00003",
             "user" : {
-                "name" : "fake-mobile-user-00003",
-                "typeOfParticipant" : "fake attendee",
-                "company" : "FAKE",
+                "name" : "skill-mobile-user-00003",
+                "typeOfParticipant" : "attendee",
+                "company" : "VALO.io",
                 "country" : "Spain",
-                "role" : "Developer"
+                "role" : "Developer",
+                "skill" : "JavaScript",
+                "gender" : "python"                                         
             }
         },
         walkerData : walkerDataConfigs.walkerMobileDefault
     },
     {
-        id : "fake-mobile-user-00004",
+        id : "skill-mobile-user-00004",
         contributorType: "mobile_user",
         valoData: {
-            "id" : "fake-mobile-user-00004",
+            "id" : "skill-mobile-user-00004",
             "user" : {
-                "name" : "fake-mobile-user-00004",
-                "typeOfParticipant" : "fake gatecrasher",
-                "company" : "FAKE",
+                "name" : "skill-mobile-user-00004",
+                "typeOfParticipant" : "gatecrasher",
+                "company" : "VALO.io",
                 "country" : "Spain",
-                "role" : "Developer"
+                "role" : "Developer",
+                "skill" : "Data Science" ,
+                "gender" : "php"                                        
             }
         },
         walkerData : walkerDataConfigs.walkerMobileDefault

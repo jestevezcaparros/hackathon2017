@@ -64,44 +64,44 @@ import {
       $('.ui.basic.modal.about').modal('show');
     });
 
-    // read tweets
-    TweetDAO.readTweets((err, valoPayload) => {
-      console.log('valoPayload', valoPayload)
-      // (create twitter box component)
-      tweetBoxComponent = tweetBoxComponent || tweetBox(document.querySelector('.tweet-container'));
+    // // read tweets
+    // TweetDAO.readTweets((err, valoPayload) => {
+    //   console.log('valoPayload', valoPayload)
+    //   // (create twitter box component)
+    //   tweetBoxComponent = tweetBoxComponent || tweetBox(document.querySelector('.tweet-container'));
 
-      // show tweet in the UI
-      tweetBoxComponent.show( TweetVO.createTweet(valoPayload) );
+    //   // show tweet in the UI
+    //   tweetBoxComponent.show( TweetVO.createTweet(valoPayload) );
 
-    })
+    // })
 
-    // read average by contributor
-    MobileDAO.readAverageHappinesEvents((err, valoPayload) => {
+    // // read average by contributor
+    // MobileDAO.readAverageHappinesEvents((err, valoPayload) => {
 
-      // create a GroupAverage element
-      const groupAverage = GroupVO.createGroupAverage(valoPayload);
+    //   // create a GroupAverage element
+    //   const groupAverage = GroupVO.createGroupAverage(valoPayload);
 
-      // no bar chart for this group, create a new one
-      if(!averageBars.has(groupAverage.group)) {
+    //   // no bar chart for this group, create a new one
+    //   if(!averageBars.has(groupAverage.group)) {
 
-        // create a bar chart
-        const chart =
-          percentBar(getNextBarChartContainer())
-          .init(groupAverage, {
-            leftIcon: 'red frown icon',
-            centerIcon: 'yellow meh icon',
-            rightIcon: 'green smile icon'
-          });
+    //     // create a bar chart
+    //     const chart =
+    //       percentBar(getNextBarChartContainer())
+    //       .init(groupAverage, {
+    //         leftIcon: 'red frown icon',
+    //         centerIcon: 'yellow meh icon',
+    //         rightIcon: 'green smile icon'
+    //       });
 
-        // store it
-        averageBars.set(groupAverage.group, chart);
+    //     // store it
+    //     averageBars.set(groupAverage.group, chart);
 
-      } else {
+    //   } else {
 
-        // update existing bar chart for current event participant
-        averageBars.get(groupAverage.group).updateAvg(groupAverage.average);
-      }
-    });
+    //     // update existing bar chart for current event participant
+    //     averageBars.get(groupAverage.group).updateAvg(groupAverage.average);
+    //   }
+    // });
 
     // read events from Valo mob_happiness stream
     MobileDAO.readHappinesEvents((error, valoPayload) => {
@@ -112,24 +112,24 @@ import {
       map.attenders.add(AttenderVO.createHappinessAttenderPoint(valoPayload));
     });
 
-    // read events from Valo mob_location stream
-    MobileDAO.readLocationEvents((error, valoPayload) => {
+    // // read events from Valo mob_location stream
+    // MobileDAO.readLocationEvents((error, valoPayload) => {
 
-      // Manage your error
-      if(error) return printError(error);
+    //   // Manage your error
+    //   if(error) return printError(error);
 
-      // convert Valo event to MapPoint, add it to the map
-      map.attenders.add(AttenderVO.createLocationAttenderPoint(valoPayload));
-    });
+    //   // convert Valo event to MapPoint, add it to the map
+    //   map.attenders.add(AttenderVO.createLocationAttenderPoint(valoPayload));
+    // });
 
-    // read events from Valo mob_happiness stream
-    IotDAO.readTemperatureEvents((error, valoPayload) => {
+    // // read events from Valo mob_happiness stream
+    // IotDAO.readTemperatureEvents((error, valoPayload) => {
 
-      // Manage your error
-      if(error) return printError(error);
-      // convert Valo event to MapPoint, add it to the map
-      map.iot.add(IOTMapPointVO.createIOTPoint(valoPayload));
-    });
+    //   // Manage your error
+    //   if(error) return printError(error);
+    //   // convert Valo event to MapPoint, add it to the map
+    //   map.iot.add(IOTMapPointVO.createIOTPoint(valoPayload));
+    // });
 
   }
   catch(e){

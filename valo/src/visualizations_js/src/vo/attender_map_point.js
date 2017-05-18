@@ -22,7 +22,9 @@ import MapPoint from './map_point';
  class AttenderPoint extends MapPoint {
    constructor(latitude, longitude, icon) {
      super(latitude, longitude);
+     //debugger
      this.icon = `${ICON_URL}${icon}.svg`;
+     //this.icon = `${ICON_URL}javascript.png`;
    }
  }
 
@@ -49,9 +51,12 @@ import MapPoint from './map_point';
   * @return {AttenderPoint}                            A valid AttenderPoint
   */
  export function createHappinessAttenderPoint(valoPayload){
+   //console.log(JSON.stringify(valoPayload))
    return new AttenderPoint(
      valoPayload.position.latitude,
      valoPayload.position.longitude,
+
+     //"javascript"
      valoPayload.happiness
    );
  }

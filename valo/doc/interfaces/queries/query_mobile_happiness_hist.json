@@ -16,7 +16,7 @@
                 "type": "datetime"
             },
             "Happiness": {
-                "type": "int"
+                "type": "string"
             },
             "long": {
                 "type": "double"
