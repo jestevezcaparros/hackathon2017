@@ -226,7 +226,8 @@ const contributors = [
                 "typeOfParticipant" : "fake organizer",
                 "company" : "FAKE",
                 "country" : "Spain",
-                "role" : "Developer"
+                "role" : "Developer",
+                "gender" : "javascript"
             }
         },
         walkerData : walkerDataConfigs.walkerMobileDefault
@@ -241,7 +242,8 @@ const contributors = [
                 "typeOfParticipant" : "fake speaker",
                 "company" : "FAKE",
                 "country" : "Spain",
-                "role" : "Developer"
+                "role" : "Developer",
+                "gender" : "java"
             }
         },
         walkerData : walkerDataConfigs.walkerMobileDefault
@@ -256,7 +258,8 @@ const contributors = [
                 "typeOfParticipant" : "fake attendee",
                 "company" : "FAKE",
                 "country" : "Spain",
-                "role" : "Developer"
+                "role" : "Developer",
+                "gender" : "java"
             }
         },
         walkerData : walkerDataConfigs.walkerMobileDefault
@@ -271,7 +274,8 @@ const contributors = [
                 "typeOfParticipant" : "fake gatecrasher",
                 "company" : "FAKE",
                 "country" : "Spain",
-                "role" : "Developer"
+                "role" : "Developer",
+                "gender" : "javascript"
             }
         },
         walkerData : walkerDataConfigs.walkerMobileDefault
