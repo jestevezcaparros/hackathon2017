@@ -5,6 +5,8 @@
         "typeOfParticipant" : "ORGANIZER",
         "company" : "VALO",
         "country" : "Spain",
-        "role" : "Data Scientist"
+        "role" : "Data Scientist",
+        "skill":"Data Scientist",
+        "gender":"java"
     }
 }

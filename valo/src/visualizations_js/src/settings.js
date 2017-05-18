@@ -13,10 +13,16 @@ export const HOST = {valoHost: "localhost", valoPort: 8888};
 export const ICON_URL = 'http://localhost:8080/icons/'
 export const TENANT = 'demo';
 // VALO QUERIES
+// export const QUERY_MOB_HAPPINESS = `
+//   from /streams/demo/mobile/happiness
+//   select timestamp, contributor.user.typeOfParticipant as typeOfParticipant, position, happiness
+// `;
+
 export const QUERY_MOB_HAPPINESS = `
   from /streams/demo/mobile/happiness
-  select timestamp, contributor.user.typeOfParticipant as typeOfParticipant, position, contributor.user.gender
+  select timestamp, contributor.user.typeOfParticipant as typeOfParticipant, position, contributor.user.gender as happiness
 `;
+
 export const HISTORICAL_QUERY_MOB_HAPPINESS = `
   from historical /streams/demo/mobile/happiness
   select timestamp, contributor.user.typeOfParticipant as typeOfParticipant, position, happiness

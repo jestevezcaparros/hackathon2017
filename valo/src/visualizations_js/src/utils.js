@@ -42,10 +42,10 @@ export function printLog(...args){
 
 function iconSizeFromZoomLevel(zoomLevel){
   switch(zoomLevel){
-    case 18: return 8;
-    case 19: return 18;
-    case 20: return 24;
-    default: return 24;
+    case 18: return 14;
+    case 19: return 24;
+    case 20: return 30;
+    default: return 30;
   }
 }
 
