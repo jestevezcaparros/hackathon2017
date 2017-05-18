@@ -40,7 +40,7 @@ export class RegistrationPage {
       tenant: "",
       collection: "",
       location: "",
-      happiness: ""
+      skill: ""
     }
   }
 
@@ -89,7 +89,7 @@ export class RegistrationPage {
 
   // Let's define here a schema storing happiness and location information
   // We'll be using this stream for capturing user ratings on the event, as well as their current location when they make the rating
-  HAPPINESS_SCHEMA = {
+  SKILL_SCHEMA = {
     "schema": {
       "version": "1.0",
       "config": {},
@@ -114,7 +114,7 @@ export class RegistrationPage {
               "heading": { "type": "double" }
             }
           },
-          "happiness": { "type": "int" }
+          "skill": { "type": "string" }
         }
       }
     }
@@ -204,7 +204,7 @@ export class RegistrationPage {
       () => {
         this.checkAndCreateContributorType(this.MOBILE_USER_CONTRIBUTOR);
         this.registerContributor();
-        this.checkAndCreateStream(this.HAPPINESS_SCHEMA, this.userDetails.valoDetails.happiness);
+        this.checkAndCreateStream(this.SKILL_SCHEMA, this.userDetails.valoDetails.skill);
         this.checkAndCreateStream(this.LOCATION_SCHEMA, this.userDetails.valoDetails.location);
         this.toastCtrl.create({
           message: "Details saved",
