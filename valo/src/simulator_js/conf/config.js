@@ -133,12 +133,28 @@ const contributorTypes = {
                 "vendor" : {"type" : "string"}
             }
         }
+    },
+    twitter : {
+        name: "twitter",
+        onTickFunction: onTickTwitter,
+        schema: {
+                "type": "record",
+                "properties": {
+                    "id": {
+                        "type": "contributor"
+                    },
+                    "app_name" : {"type" : "string"},
+                    "app_owner_twitter_name" : {"type" : "string"}
+                }
+        }
+
+
     }
 }
 
 const contributors = [
     // IOT BOARDS
-    {
+/*    {
         id : "fake-board-00001",
         contributorType: "iot_board",
         valoData: {
@@ -213,7 +229,7 @@ const contributors = [
             },
             accRandomGenerator : accGeneratorIotBoard
         }
-    },
+    },*/
 
     // MOBILE USERS
     {
@@ -223,7 +239,7 @@ const contributors = [
             "id" : "fake-mobile-user-00001",
             "user" : {
                 "name" : "fake-mobile-user-00001",
-                "typeOfParticipant" : "fake organizer",
+                "typeOfParticipant" : "#coffee",
                 "company" : "FAKE",
                 "country" : "Spain",
                 "role" : "Developer"
@@ -238,7 +254,7 @@ const contributors = [
             "id" : "fake-mobile-user-00002",
             "user" : {
                 "name" : "fake-mobile-user-00002",
-                "typeOfParticipant" : "fake speaker",
+                "typeOfParticipant" : "#beers",
                 "company" : "FAKE",
                 "country" : "Spain",
                 "role" : "Developer"
@@ -252,23 +268,8 @@ const contributors = [
         valoData: {
             "id" : "fake-mobile-user-00003",
             "user" : {
-                "name" : "fake-mobile-user-00003",
-                "typeOfParticipant" : "fake attendee",
-                "company" : "FAKE",
-                "country" : "Spain",
-                "role" : "Developer"
-            }
-        },
-        walkerData : walkerDataConfigs.walkerMobileDefault
-    },
-    {
-        id : "fake-mobile-user-00004",
-        contributorType: "mobile_user",
-        valoData: {
-            "id" : "fake-mobile-user-00004",
-            "user" : {
                 "name" : "fake-mobile-user-00004",
-                "typeOfParticipant" : "fake gatecrasher",
+                "typeOfParticipant" : "#temperature",
                 "company" : "FAKE",
                 "country" : "Spain",
                 "role" : "Developer"
@@ -276,6 +277,19 @@ const contributors = [
         },
         walkerData : walkerDataConfigs.walkerMobileDefault
     },
+
+
+    // TWEETS
+    {
+        id : "fake-tweet-00001",
+        contributorType: "twitter",
+        valoData: {
+                "id": "fake-tweet-00001",
+                "app_name" : "fakeAppName",
+                "app_owner_twitter_name" : "fakeAppOwnerName"
+        },
+        walkerData : walkerDataConfigs.walkerMobileDefault
+    }
 ];
 
 
@@ -470,6 +484,80 @@ async function onTickIotBoard(
             { valoHost, valoPort },
             [valoTenant, STREAM_COLLECTION , STREAM_NAME_TEMPERATURE],
             temperatureEvt
+        );
+
+        // Update timestampLast
+        state.timestampLast = Date.now();
+    }
+}
+
+//
+// Twitter - Custom contributor's onTick() function
+//
+async function onTickTwitter(
+    contributorType, contributorId,
+    valoHost, valoPort, valoTenant,
+    position, state
+) {
+    const STREAM_COLLECTION = "twitter";
+    const STREAM_NAME = "tweets";
+
+    const DEBOUNCE_TIME = 1000 * 10;
+
+    // Intervals in milliseconds
+    const elapsedInterval = state.timestampLast ?
+        Date.now() - state.timestampLast : null;
+
+    //
+    // Update in Valo only if enough time has passed
+    //
+    if (
+        elapsedInterval === null
+        || elapsedInterval > DEBOUNCE_TIME
+    ) {
+        //
+        // Build events
+        //
+        const fakeTweets = [{
+            "name": "Adolfo Luzardo Cabrera",
+            "screen_name": "adolfoluzardo",
+            "profile_image_url": "https://pbs.twimg.com/profile_images/622343886065807360/Ewn3-hsp_400x400.jpg",
+            "text": "@jotbhelp #morebeers in #secondfloor please"
+        }, {
+            "name": "Aida G",
+            "screen_name": "azulita88",
+            "profile_image_url": "https://pbs.twimg.com/profile_images/744970972235702272/rCARobsx.jpg",
+            "text": "@jotbhelp #morecoffee in #thirdfloor please"
+        }, {
+            "name": "Temperature senson",
+            "screen_name": "surfboard",
+            "profile_image_url": "https://www.embarcados.com.br/wp-content/uploads/2015/10/4.jpg",
+            "text": "@jotbhelp high #temperature in #camperoRoom"
+        }];
+
+        const index = Math.floor(Math.random() * fakeTweets.length);
+
+        const tweetEvt = {
+            "contributor" : contributorId,
+            "tweet" :{
+                "created_at": "2017-05-18T13:00:55Z",
+                "id": 865173644368072700,
+                "id_str": "865173644368072704",
+                "text": fakeTweets[index].text,
+                "user": {
+                    "name": fakeTweets[index].name,
+                    "screen_name": fakeTweets[index].screen_name,
+                    "profile_image_url_https": fakeTweets[index].profile_image_url
+                }
+            }
+    };
+        console.log(tweetEvt);
+
+        // Publish event(s) into Valo
+        await publishEventToStream(
+            { valoHost, valoPort },
+            [valoTenant, STREAM_COLLECTION , STREAM_NAME],
+            tweetEvt
         );
 
         // Update timestampLast
