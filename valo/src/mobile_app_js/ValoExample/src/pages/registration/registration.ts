@@ -19,6 +19,9 @@ import { retryOnConflict } from '../../../../../lib_js/valo_sdk_js/index';
 
 export class RegistrationPage {
 
+  skills: Array<String> = ["Java","JavaScript","Python","Ruby","Scala","Go"];
+
+
   // Let's define some default application values
   // We want to be able to define the following:
   //  - mobile id
@@ -40,7 +43,7 @@ export class RegistrationPage {
       tenant: "",
       collection: "",
       location: "",
-      happiness: ""
+      skill: ""
     }
   }
 
@@ -61,7 +64,7 @@ export class RegistrationPage {
     tenant: "demo",
     collection: "mobile",
     location: "location",
-    happiness: "happiness"
+    skill: "skill"
   }
 
   // Let's define here a schema for the mobile_user contributor type
@@ -80,45 +83,53 @@ export class RegistrationPage {
             "company": { "type": "string" },
             "role": { "type": "string" },
             "country": { "type": "string" },
-            "gender": { "type": "string" }
+            "gender": { "type": "string" },
+            "skill": { "type": "string" }           
           }
         }
       }
     }
   }
 
-  // Let's define here a schema storing happiness and location information
-  // We'll be using this stream for capturing user ratings on the event, as well as their current location when they make the rating
-  HAPPINESS_SCHEMA = {
-    "schema": {
-      "version": "1.0",
-      "config": {},
-      "topDef": {
-        "type": "record",
-        "properties": {
-          "contributor": {
-            "type": "contributor", "definition": "mobile_user"
-          },
-          "timestamp": {
-            "type": "datetime",
-            "annotations": ["urn:itrs:default-timestamp"]
-          },
-          "position": {
-            "type": "record",
-            "properties": {
-              "latitude": { "type": "double" },
-              "longitude": { "type": "double" },
-              "altitude": { "type": "double" },
-              "accuracy": { "type": "double" },
-              "speed": { "type": "double" },
-              "heading": { "type": "double" }
-            }
-          },
-          "happiness": { "type": "int" }
-        }
-      }
-    }
-  }
+
+
+
+  // SKILL_SCHEMA = {
+  //   "schema": {
+  //     "version": "1.0",
+  //     "config": {},
+  //     "topDef": {
+  //       "type": "record",
+  //       "properties": {
+  //         "contributor": {
+  //           "type": "contributor", "definition": "mobile_user"
+  //         },
+  //         "timestamp": {
+  //           "type": "datetime",
+  //           "annotations": ["urn:itrs:default-timestamp"]
+  //         },
+  //         "position": {
+  //           "type": "record",
+  //           "properties": {
+  //             "latitude": { "type": "double" },
+  //             "longitude": { "type": "double" },
+  //             "altitude": { "type": "double" },
+  //             "accuracy": { "type": "double" },
+  //             "speed": { "type": "double" },
+  //             "heading": { "type": "double" }
+  //           }
+  //         },
+  //         "skill": { "type": "string" }
+  //       }
+  //     }
+  //   }
+  // }
+
+
+
+
+
+
 
   // Let's define here a schema storing location information
   // We'll be using this stream for capturing user locations when the app is open
@@ -151,6 +162,11 @@ export class RegistrationPage {
       }
     }
   }
+
+
+
+
+
 
   // Define a default repository for streams; let's just use an SSR repository
   REPO_CONF_SSR = {
@@ -204,7 +220,7 @@ export class RegistrationPage {
       () => {
         this.checkAndCreateContributorType(this.MOBILE_USER_CONTRIBUTOR);
         this.registerContributor();
-        this.checkAndCreateStream(this.HAPPINESS_SCHEMA, this.userDetails.valoDetails.happiness);
+        // this.checkAndCreateStream(this.SKILL_SCHEMA, this.userDetails.valoDetails.skill);
         this.checkAndCreateStream(this.LOCATION_SCHEMA, this.userDetails.valoDetails.location);
         this.toastCtrl.create({
           message: "Details saved",

@@ -14,13 +14,23 @@
           <ion-input type="text" [(ngModel)]="userDetails.user.name" name="name"></ion-input>
         </ion-item>
 
-        <ion-item>
+        <!--<ion-item>
           <ion-label color="light" floating>Gender</ion-label>
           <ion-select [(ngModel)]="userDetails.user.gender" name="gender">
             <ion-option value="male">Male</ion-option>
             <ion-option value="female">Female</ion-option>
           </ion-select>
+        </ion-item>-->
+
+
+
+        <ion-item>       
+          <ion-label color="light" floating>Skill Stream</ion-label>
+          <ion-select [(ngModel)]="userDetails.valoDetails.gender" value="-" name="gender">       
+              <ion-option *ngFor="let c of skills; let i = index"  value="{{i}}">{{c}}</ion-option>  
+          </ion-select>     
         </ion-item>
+
 
         <ion-item>
           <ion-label color="light" floating>Type of Participant</ion-label>
@@ -73,14 +83,7 @@
           <ion-input type="text" [(ngModel)]="userDetails.valoDetails.location" name="location"></ion-input>
         </ion-item>
 
-        <ion-item>       
-          <ion-label color="light" floating>Skill Stream</ion-label>
-          <ion-option>-</ion-option>  
-          <ion-select [(ngModel)]="userDetails.valoDetails.skill" name="skill">
-              <ion-option *ngFor="let c of skills; let i = index"  value="{{i}}">{{c}}</ion-option>  
-          </ion-select>     
-      
-        </ion-item>
+
 
       </ion-list>
 
