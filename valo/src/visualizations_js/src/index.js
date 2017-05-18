@@ -47,10 +47,10 @@ import {
     let tweetBoxComponent = null;
 
     // This creates a google Maps Api v3 instance rendering the map
-    const map = JotbMap({
-      domElement: document.querySelector(MAP_CONTAINER_CSS_SELECTOR),
-      options: MAP_OPTIONS
-    });
+    // const map = JotbMap({
+    //   domElement: document.querySelector(MAP_CONTAINER_CSS_SELECTOR),
+    //   options: MAP_OPTIONS
+    // });
 
     // utility function
     const getNextBarChartContainer = function() {
@@ -68,10 +68,10 @@ import {
     TweetDAO.readTweets((err, valoPayload) => {
       console.log('valoPayload', valoPayload)
       // (create twitter box component)
-      tweetBoxComponent = tweetBoxComponent || tweetBox(document.querySelector('.tweet-container'));
+      tweetBoxComponent = tweetBoxComponent || tweetBox(document.querySelector('#issues'));
 
       // show tweet in the UI
-      tweetBoxComponent.show( TweetVO.createTweet(valoPayload) );
+      tweetBoxComponent.add( TweetVO.createTweet(valoPayload) );
 
     })
 
@@ -88,9 +88,9 @@ import {
         const chart =
           percentBar(getNextBarChartContainer())
           .init(groupAverage, {
-            leftIcon: 'red frown icon',
-            centerIcon: 'yellow meh icon',
-            rightIcon: 'green smile icon'
+            leftIcon: '',
+            centerIcon: '',
+            rightIcon: ''
           });
 
         // store it
