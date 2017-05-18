@@ -63,8 +63,8 @@ export class RegistrationPage {
     port: "8888",
     tenant: "demo",
     collection: "mobile",
-    location: "location",
-    skill: "skill"
+    location: "location"
+    // ,    skill: "skill"
   }
 
   // Let's define here a schema for the mobile_user contributor type
@@ -83,49 +83,13 @@ export class RegistrationPage {
             "company": { "type": "string" },
             "role": { "type": "string" },
             "country": { "type": "string" },
-            "gender": { "type": "string" },
-            "skill": { "type": "string" }           
+            "gender": { "type": "string" }
+            // ,            "skill": { "type": "string" }           
           }
         }
       }
     }
   }
-
-
-
-
-  // SKILL_SCHEMA = {
-  //   "schema": {
-  //     "version": "1.0",
-  //     "config": {},
-  //     "topDef": {
-  //       "type": "record",
-  //       "properties": {
-  //         "contributor": {
-  //           "type": "contributor", "definition": "mobile_user"
-  //         },
-  //         "timestamp": {
-  //           "type": "datetime",
-  //           "annotations": ["urn:itrs:default-timestamp"]
-  //         },
-  //         "position": {
-  //           "type": "record",
-  //           "properties": {
-  //             "latitude": { "type": "double" },
-  //             "longitude": { "type": "double" },
-  //             "altitude": { "type": "double" },
-  //             "accuracy": { "type": "double" },
-  //             "speed": { "type": "double" },
-  //             "heading": { "type": "double" }
-  //           }
-  //         },
-  //         "skill": { "type": "string" }
-  //       }
-  //     }
-  //   }
-  // }
-
-
 
 
 
