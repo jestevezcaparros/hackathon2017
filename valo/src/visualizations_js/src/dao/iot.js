@@ -20,7 +20,8 @@
  import {
   QUERY_TEMP,
   HISTORICAL_QUERY_TEMP,
-  REPLAY
+  REPLAY,
+  QUERY_ALCOHOL
  } from '../settings';
 
  /**
@@ -37,6 +38,16 @@
    try {
      const query = REPLAY ? HISTORICAL_QUERY_TEMP : QUERY_TEMP;
      return readEvents(query, callback);
+   } catch (error) {
+     printError(error);
+     callback(error);
+   }
+ }
+
+
+ export async function readAlcoholEvents(callback){
+   try {
+     return readEvents(QUERY_ALCOHOL, callback);
    } catch (error) {
      printError(error);
      callback(error);

@@ -42,6 +42,12 @@ export const HISTORICAL_QUERY_TEMP = `
   select timestamp, temperature, position
   take 10000
 `;
+
+export const QUERY_ALCOHOL = `
+  from /streams/demo/iot_board/temperature
+  select timestamp, contributor, alcohol, position
+`;
+
 export const QUERY_MOB_HAPPINESS_AVG = `
   from /streams/demo/mobile/happiness
   group by contributor.user.typeOfParticipant, timestamp window of 1 minute every 1 second
