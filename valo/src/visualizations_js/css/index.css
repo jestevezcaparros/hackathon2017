@@ -90,7 +90,7 @@ svg {
 .avg-container {
   z-index: 1;
   position: absolute;
-  right: 5px;
+  left: 5px;
   top: 45px;
   width: 200px;
   padding: 20px;
