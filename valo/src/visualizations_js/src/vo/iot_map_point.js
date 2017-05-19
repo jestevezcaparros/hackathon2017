@@ -30,3 +30,14 @@ export function createIOTPoint(valoPayload){
     valoPayload.temperature
   );
 }
+
+export function createIOTPoint(valoPayload){
+  return new IOTPoint(
+    valoPayload.position.latitude,
+    valoPayload.position.longitude,
+    valoPayload.contributor,
+    valoPayload.alcohol
+  );
+}
+
+

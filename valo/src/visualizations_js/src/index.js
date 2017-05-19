@@ -134,7 +134,7 @@ import {
     IotDAO.readAlcoholEvents((error, valoPayload) => {
       if(error) return printError(error);
       //map.iot.add(IOTMapPointVO.createIOTPoint(valoPayload));
-      console.log(valoPayload)
+      map.alcohol.add(IOTMapPointVO.createIOTPoint(valoPayload))
     });
 
 

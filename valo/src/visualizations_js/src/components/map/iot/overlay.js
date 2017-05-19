@@ -21,14 +21,18 @@ export default class IOTOverlayView extends OverlayView {
     * @param {Map} map A google.maps.Map instance
     * @return IOTOverlayView instance
     */
-    constructor(map){
+    constructor(map, range){
       super();
       this._thermometers = {};
       this.map = map;
       this.mapsize = document.body.getBoundingClientRect();
       this.setMap(map);
+      this.range = range;
     }
 
+      
+
+  
     /**
     * IOTOverlayView constructor function
     * Adds the overlay view to the map
@@ -57,7 +61,7 @@ export default class IOTOverlayView extends OverlayView {
     getThermometer(id) {
       if(this._thermometers[id]) return this._thermometers[id];
       this._thermometers[id] = new Thermometer(this.iotContainerElement);
-      this._thermometers[id].setRange([0,40]);
+      this._thermometers[id].setRange(this.range)
       return this._thermometers[id];
     }
 

@@ -28,5 +28,9 @@ export default ({domElement, options}) => {
   // Adds the iot overlay view to the map
   const iot = OverlayViewFactory.create(
     OverlayViewFactory.IOT_OVERLAYVIEW, map);
-  return {attenders, iot};
+  // 
+  const alcohol = OverlayViewFactory.create(
+    OverlayViewFactory.ALCOHOL_OVERLAYVIEW, map);
+
+  return {attenders, iot, alcohol};
 }

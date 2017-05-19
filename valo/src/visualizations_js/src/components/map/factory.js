@@ -30,8 +30,11 @@ export function create(type, map) {
       _instance = new AttendersOverlayView(map);
       break;
     case 'IOT_OVERLAYVIEW':
-      _instance = new IotOverlayView(map);
+      _instance = new IotOverlayView(map, [0,40]);
       break;
+    case 'ALCOHOL_OVERLAYVIEW':
+      _instance = new IotOverlayView(map, [0,2]);
+
     default: throw Error('Overlay View type not implemented')
   }
   return _instance;
