@@ -54,10 +54,10 @@ import {
 
     // utility function
     const getNextBarChartContainer = function() {
-      var chartContainer = document.createElement('div');
-      chartContainer.classList.add('avg-chart-container');
-      document.querySelector('.avg-container').appendChild(chartContainer);
-      return chartContainer;
+      //var chartContainer = document.createElement('div');
+      //chartContainer.classList.add('avg-chart-container');
+      //document.querySelector('.avg-container').appendChild(chartContainer);
+      return null;
     }
 
     document.querySelector('#top-menu-about').addEventListener('click', function(event) {
@@ -77,7 +77,6 @@ import {
 
     // read average by contributor
     MobileDAO.readAverageHappinesEvents((err, valoPayload) => {
-
       // create a GroupAverage element
       const groupAverage = GroupVO.createGroupAverage(valoPayload);
 

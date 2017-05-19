@@ -125,7 +125,7 @@ export default function(domElement) {
         let cell1 = row.insertCell(0);
 
        // Add some text to the new cells:
-        cell1.innerHTML = '<h4 class="ui image header"><img class="avatar-img ui mini rounded image" src="'+tweet.profile_image_url_https+'"><div class="content">'+tweet.name+'<div class="sub header">'+tweet.text+'</div></div></h4>';
+        cell1.innerHTML = '<h4 class="ui image header"><img class="avatar-img ui rounded image" src="'+tweet.profile_image_url_https+'"><div class="content">'+tweet.name+'<div class="sub header">'+tweet.text+'</div></div></h4>';
     }
 
   };

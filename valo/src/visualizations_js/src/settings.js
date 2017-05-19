@@ -43,9 +43,8 @@ export const HISTORICAL_QUERY_TEMP = `
   take 10000
 `;
 export const QUERY_MOB_HAPPINESS_AVG = `
-  from /streams/demo/mobile/happiness
-  group by contributor.user.typeOfParticipant, timestamp window of 1 minute every 1 second
-  select typeOfParticipant as TypeOfParticipant, 100 * avg( (happiness+1.0) / 2.0) as AverageHappiness
+  from /streams/demo/twitter/tweets
+  select count() as AverageHappiness
 `;
 export const HISTORICAL_QUERY_MOB_HAPPINESS_AVG = QUERY_MOB_HAPPINESS_AVG.replace('from ', 'from historical ');
 export const QUERY_TWEETS = `
