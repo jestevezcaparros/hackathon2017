@@ -19,7 +19,7 @@ import { retryOnConflict } from '../../../../../lib_js/valo_sdk_js/index';
 
 export class RegistrationPage {
 
-  skills: Array<String> = ["Java","JavaScript","Python","Ruby","Scala","Go"];
+  skills: Array<String> = ["java","ruby","scala","php","python","javascript"];
 
 
   // Let's define some default application values
@@ -42,8 +42,7 @@ export class RegistrationPage {
       port: "",
       tenant: "",
       collection: "",
-      location: "",
-      skill: ""
+      location: ""
     }
   }
 
@@ -51,8 +50,8 @@ export class RegistrationPage {
 
   DEFAULT_USER = {
     name: "Jon Snow",
-    gender: "male",
-    type: "gatecrasher",
+    gender: "java",
+    type: "attendee",
     company: "House Stark",
     country: "Winterfell",
     role: "King in the North"
@@ -64,7 +63,6 @@ export class RegistrationPage {
     tenant: "demo",
     collection: "mobile",
     location: "location"
-    // ,    skill: "skill"
   }
 
   // Let's define here a schema for the mobile_user contributor type
@@ -83,8 +81,7 @@ export class RegistrationPage {
             "company": { "type": "string" },
             "role": { "type": "string" },
             "country": { "type": "string" },
-            "gender": { "type": "string" }
-            // ,            "skill": { "type": "string" }           
+            "gender": { "type": "string" }         
           }
         }
       }
@@ -155,21 +152,31 @@ export class RegistrationPage {
             valoDetails: obj.valoDetails
           }
         } else {
-          this.userDetails = {
-            id: this.device.uuid ? this.device.uuid : this.DEFAULT_ID,
-            user: this.DEFAULT_USER,
-            valoDetails: this.DEFAULT_VALODETAILS
-          }
+          setTimeout(()=>{
+            this.userDetails = {
+              id: this.device.uuid ? this.device.uuid : this.DEFAULT_ID,
+              user: this.DEFAULT_USER,
+              valoDetails: this.DEFAULT_VALODETAILS
+            }   
+            this.userDetails.id=this.device.uuid ? this.device.uuid : this.DEFAULT_ID;
+            this.userDetails.user=this.DEFAULT_USER;
+            this.userDetails.valoDetails=this.DEFAULT_VALODETAILS;
+            this.userDetails.user.gender="javascript";
+
+          },1000);
+          
         }
+
       },
       error => {
         this.userDetails = {
           id: this.device.uuid ? this.device.uuid : this.DEFAULT_ID,
           user: this.DEFAULT_USER,
           valoDetails: this.DEFAULT_VALODETAILS
-        }
+        }        
       }
     );
+ 
   }
 
   // This function is called when the registration form is submitted
