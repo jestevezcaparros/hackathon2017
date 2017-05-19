@@ -44,7 +44,7 @@ export const HISTORICAL_QUERY_TEMP = `
 `;
 
 export const QUERY_ALCOHOL = `
-  from /streams/demo/iot_board/temperature
+  from /streams/demo/iot_board/alcohol
   select timestamp, contributor, alcohol, position
 `;
 
