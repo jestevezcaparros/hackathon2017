@@ -28,7 +28,8 @@ const CONTRIBUTOR_TYPES = [
     "iot_board",
     "mobile_user",
     "realsense",
-    "twitter_app" 
+    "twitter_app",
+    "ehealth" 
 ];
 // Contributors instances. Each row has [contributorType, instanceName, fileName]
 const CONTRIBUTOR_INSTANCES = [
@@ -51,7 +52,11 @@ const STREAMS = [
     ["iot_board", "temperature", "stream_iot_temperature.json", "ssr"],
     ["iot_board", "distance", "stream_iot_distance.json", "ssr"],
     ["iot_board", "current", "stream_iot_current.json", "ssr"],
-    ["twitter", "tweets", "stream_tweet.json", "ssr"]
+    ["twitter", "tweets", "stream_tweet.json", "ssr"],
+    ["ehealth", "diastolic", "stream_ehealth_diastolic.json", "ssr"],
+    ["ehealth", "systolic", "stream_ehealth_systolic.json", "ssr"],
+    ["ehealth", "bpm", "stream_ehealth_bpm.json", "ssr"]
+
 ];
 
 ////////////////////////////////////////////////////////////////////////////////
