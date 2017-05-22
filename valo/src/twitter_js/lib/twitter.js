@@ -53,9 +53,9 @@ function getClient({
  */
 function getStreamingStatusesFilter(
     client,
-    {track = 'twitter, javascript'} = {}
+    filters
 ) {
-
+    console.log(filters);
     // Check the client is the correct type
     if (client.constructor !== Twitter)
         throw WrapError(new Error(), {
@@ -68,7 +68,7 @@ function getStreamingStatusesFilter(
 
             const stream = client.stream(
                 'statuses/filter',
-                {track}
+                filters
             );
             stream.on('data', event =>  {
                 observer.onNext(event);
