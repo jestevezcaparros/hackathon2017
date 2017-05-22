@@ -22,16 +22,11 @@ import MapPoint from './map_point';
  class AttenderPoint extends MapPoint {
    constructor(id,latitude, longitude, icon) {
      super(latitude, longitude);
-     //debugger
-     console.log("CREANDO ATTENDER POINT")
      this.id=id;
      this.icon = `${ICON_URL}${icon}.svg`;
-     //this.icon = `${ICON_URL}javascript.png`;
-          console.log("CREANDO ATTENDER POINT2")
-   }
-   
+     this.skill=icon;
+   }  
  }
-
 
 
 var attenders={};
@@ -43,8 +38,6 @@ var attenders={};
   * @return {AttenderPoint}                            A valid AttenderPoint
   */
  export function createHappinessAttenderPoint(valoPayload){
-   //console.log(JSON.stringify(valoPayload))
-   console.log("CONTRIBUTOR="+valoPayload.contributor)
    let id = valoPayload.contributor;
    if (attenders[id]==null){
       attenders[id]=new AttenderPoint(
@@ -53,12 +46,15 @@ var attenders={};
         valoPayload.position.longitude,
         valoPayload.happiness
       );
+      attenders[id].country=valoPayload.country;
+      attenders[id].typeOfParticipant=valoPayload.typeOfParticipant;
    //   return attenders[id];
   }else {
     attenders[id].latitude=valoPayload.position.latitude;
     attenders[id].longitude=valoPayload.position.longitude;    
    //   return attenders[id];
   }
-  console.log("VAMOS A DEVOLVER "+JSON.stringify(attenders))
+
+  //  console.log("VAMOS A DEVOLVER "+JSON.stringify(attenders))
    return attenders;
  }
