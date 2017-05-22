@@ -20,29 +20,21 @@ import MapPoint from './map_point';
   * Represents an attender point for google maps
   */
  class AttenderPoint extends MapPoint {
-   constructor(latitude, longitude, icon) {
+   constructor(id,latitude, longitude, icon) {
      super(latitude, longitude);
      //debugger
+     console.log("CREANDO ATTENDER POINT")
+     this.id=id;
      this.icon = `${ICON_URL}${icon}.svg`;
      //this.icon = `${ICON_URL}javascript.png`;
+          console.log("CREANDO ATTENDER POINT2")
    }
+   
  }
 
- /**
-  * Create a valid AttenderPoint given an event from Valo mobile location stream
-  * @method createLocationAttenderPoint
-  * @param  {Object}                valoPayload   A mob_location Valo stream event
-  * @return {AttenderPoint}                            A valid AttenderPoint
-  */
- export function createLocationAttenderPoint(valoPayload){
-   return new AttenderPoint(
-     valoPayload.position.latitude,
-     valoPayload.position.longitude,
-     valoPayload.typeOfParticipant ?
-     `footprints-${valoPayload.typeOfParticipant.toLowerCase()}` :
-     `footprints`
-   );
- }
+
+
+var attenders={};
 
  /**
   * Create a valid MapPoint given an event from Valo mobile happiness stream
@@ -52,11 +44,21 @@ import MapPoint from './map_point';
   */
  export function createHappinessAttenderPoint(valoPayload){
    //console.log(JSON.stringify(valoPayload))
-   return new AttenderPoint(
-     valoPayload.position.latitude,
-     valoPayload.position.longitude,
-
-     //"javascript"
-     valoPayload.happiness
-   );
+   console.log("CONTRIBUTOR="+valoPayload.contributor)
+   let id = valoPayload.contributor;
+   if (attenders[id]==null){
+      attenders[id]=new AttenderPoint(
+        valoPayload.id,
+        valoPayload.position.latitude,
+        valoPayload.position.longitude,
+        valoPayload.happiness
+      );
+   //   return attenders[id];
+  }else {
+    attenders[id].latitude=valoPayload.position.latitude;
+    attenders[id].longitude=valoPayload.position.longitude;    
+   //   return attenders[id];
+  }
+  console.log("VAMOS A DEVOLVER "+JSON.stringify(attenders))
+   return attenders;
  }

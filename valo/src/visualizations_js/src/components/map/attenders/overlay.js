@@ -25,6 +25,9 @@ export default class AttendersOverlayView extends OverlayView {
       super();
       this.points = [];
       this.map = map;
+
+
+
       this.mapsize = document.body.getBoundingClientRect();
       this.setMap(map);
     }
@@ -54,7 +57,8 @@ export default class AttendersOverlayView extends OverlayView {
     * @return AttendersOverlayView instance
     */
     onAdd() {
-      this.createOverlayElement('canvas', 'main');
+
+      this.createOverlayElement('canvas', 'main');      
       this.createOverlayElement('canvas', 'opacity');
       this.mainContext = this.main.getContext("2d");
       this.opacityContext = this.opacity.getContext('2d');
@@ -65,21 +69,31 @@ export default class AttendersOverlayView extends OverlayView {
     * Called every time a draw is required
     * @return AttendersOverlayView instance
     */
-    draw() {
+    draw(points) {
+      console.log("DRAW POINTS")
         if(!this.mainContext || !this.opacityContext) return this;
         const projection = this.getProjection();
         this.mainContext.save();
         this.mainContext.clearRect(0, 0, this.mapsize.width, this.mapsize.height);
         this.mainContext.globalAlpha = 0.8;
-        this.mainContext.drawImage(this.opacity, 0, 0);
+        // this.mainContext.drawImage(this.opacity, 0, 0);
         this.mainContext.globalAlpha = 1;
-        this.mainContext.fillStyle = 'blue';
-        this.points.forEach(point => plotPoint(this.mainContext, point, projection, this.map.getZoom()))
+        // this.mainContext.fillStyle = 'blue';
+        console.log("this.points = "+JSON.stringify(this.points))
+
+        
+        for(var p in points) {
+          plotPoint(this.mainContext, points[p], projection, this.map.getZoom(),p)
+        }
+
+
+       // this.points.forEach(point => plotPoint(this.mainContext, point, projection, this.map.getZoom()))
         this.mainContext.restore();
         this.opacityContext.clearRect(0, 0, this.mapsize.width, this.mapsize.height);
         this.opacityContext.drawImage(this.main, 0, 0);
         return this;
     }
+
 
     /**
     * This adds new points to the overlay.
@@ -87,11 +101,30 @@ export default class AttendersOverlayView extends OverlayView {
     * @return AttendersOverlayView instance
     */
     add(points) {
-        this.points = (Array.isArray(points) ? points : [points])
-          .map(d => ({
-            geo: new window.google.maps.LatLng(d.latitude, d.longitude),
-            icon:d.icon
-          }));
-        this.draw();
+      // console.log("VAMOS A AÑADIR PUNTOS "+JSON.stringify(points))
+      //   this.points = (Array.isArray(points) ? points : [points])
+      //     .map(d => ({
+      //       geo: new window.google.maps.LatLng(d.latitude, d.longitude),
+      //       icon:d.icon
+      //     }));
+
+        console.log("ADD POINTS")
+        this.map.points=points;
+        for(var p in points) {
+          points[p].geo=new window.google.maps.LatLng(points[p].latitude,points[p].longitude)
+          // new google.maps.InfoWindow({
+          //     content: "HOLA QUE PASA",
+          //     position: evt.latLng
+          //   });
+          //if (points[p].infowindow!=null){
+          //  points[p].infowindow.position=points[p].geo;
+          //}
+        }
+
+        this.draw(points);
+
+
+
+
     }
 }

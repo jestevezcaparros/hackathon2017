@@ -20,7 +20,7 @@ export const TENANT = 'demo';
 
 export const QUERY_MOB_HAPPINESS = `
   from /streams/demo/mobile/happiness
-  select timestamp, contributor.user.typeOfParticipant as typeOfParticipant, position, contributor.user.gender as happiness
+  select contributor, timestamp, contributor.user.typeOfParticipant as typeOfParticipant, position, contributor.user.gender as happiness
 `;
 
 export const HISTORICAL_QUERY_MOB_HAPPINESS = `
@@ -101,6 +101,7 @@ export const MAP_OPTIONS = {
     zoom: 20,
     disableDefaultUI: true,
     backgroundColor: "#bbb",
+    // backgroundColor: "#ffffff",    
     draggable: false,
     scrollwheel: false,
     navigationControl: false,
@@ -109,7 +110,10 @@ export const MAP_OPTIONS = {
     minZoom: 18,
     maxZoom: 20,
     center: LA_TERMICA_COORDINATES,
-    styles: [
+    styles: 
+
+
+    [
     {
         "elementType": "labels",
         "stylers": [
@@ -117,31 +121,45 @@ export const MAP_OPTIONS = {
                 "visibility": "off"
             }
         ]
-    },
-    {
-        "featureType": "all",
-        "elementType": "all",
+    }]
 
-        "stylers": [
-            {
-                "invert_lightness": true
-            },
-            {
-                "saturation": -80
-            },
-            {
-                "lightness": 30
-            },
-            {
-                "gamma": 0.5
-            },
-            {
-                "hue": "#3d433a"
-            }
 
-        ]
-    }
-]
+//     styles: 
+
+
+//     [
+//     {
+//         "elementType": "labels",
+//         "stylers": [
+//             {
+//                 "visibility": "off"
+//             }
+//         ]
+//     },
+//     {
+//         "featureType": "all",
+//         "elementType": "all",
+
+//         "stylers": [
+//             {
+//                 "invert_lightness": false
+//             },
+//             {
+//                 "saturation": 0
+//             },
+//             {
+//                 "lightness": 0
+//             },
+//             {
+//                 "gamma": 0.5
+//             },
+//             {
+//                 "hue": "#000000"
+//             }
+
+//         ]
+//     }
+// ]
 };
 export const AUDITORIO_POLYGON = [
     {lat: 36.689026, lng: -4.444346},
