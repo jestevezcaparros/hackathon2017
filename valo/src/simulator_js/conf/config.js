@@ -10,6 +10,7 @@
  * @license MIT
  * @author Álvaro Santamaría Herrero <asantamaria@itrsgroup.com>
  * @author Zuri Pabón <zpabon@itrsgroup.com>
+ * @author José Ángel Morell <ja2m_@hotmail.com>
  * @author (Each contributor appends a line here)
  */
 import {
@@ -72,7 +73,7 @@ const valoClient = {
 // WALKERS - Acceleration generators for walkers
 ///////////////////////////////////////////////////////////////////////////////
 // Walker resolution
-const TUNE_THIS = 9; // Tune this param to adjust the size of the steps
+const TUNE_THIS = 6; // Tune this param to adjust the size of the steps
 const WALKER_RESOLUTION = 0.000000001 * TUNE_THIS * 1 / GRID_RESOLUTION;
 
 // Acceleration generators
@@ -528,8 +529,8 @@ async function onTickMobile (
     const STREAM_COLLECTION = "mobile";
     const STREAM_NAME_LOCATION = "location";
     const STREAM_NAME_HAPPINESS = "happiness";
-    const DEBOUNCE_TIME_LOCATION = 1000;
-    const DEBOUNCE_TIME_HAPPINESS = 5000;
+    const DEBOUNCE_TIME_LOCATION = 100000; //1000
+    const DEBOUNCE_TIME_HAPPINESS = 500; //5000
     const LIKELIHOOD_PUBLISHING_HAPPINESS = 0.5
 
     // Intervals in milliseconds

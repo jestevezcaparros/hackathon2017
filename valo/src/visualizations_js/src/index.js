@@ -65,10 +65,7 @@ import {
       if(error) return printError(error);
 
       // convert Valo event to MapPoint, add it to the map
-      //console.log("ANTES DEL ADD")
       map.attenders.add(AttenderVO.createHappinessAttenderPoint(valoPayload));
-
-      
     });
 
 
