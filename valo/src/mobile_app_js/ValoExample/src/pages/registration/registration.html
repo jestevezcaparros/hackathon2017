@@ -27,10 +27,19 @@
 
         <ion-item>       
           <ion-label color="light" floating>Skill Stream</ion-label>
-          <ion-select [(ngModel)]="userDetails.valoDetails.gender" value="-" name="gender">       
-              <ion-option *ngFor="let c of skills; let i = index"  value="{{i}}">{{c}}</ion-option>  
+          <ion-select [(ngModel)]="userDetails.user.gender" name="gender">      
+              <!--<option value="" style="display: none"></option>           
+              <ion-option  *ngFor="let c of skills; let i = index"  value="{{i}}">{{c}}</ion-option>  -->
+ 
+              <ion-option value="male">Java</ion-option>
+              <ion-option value="javascript">JavaScript</ion-option>
+              <ion-option value="python">Python</ion-option>
+              <ion-option value="php">PHP</ion-option>
           </ion-select>     
         </ion-item>
+
+
+
 
 
         <ion-item>
@@ -59,27 +68,27 @@
           <ion-input type="text" [(ngModel)]="userDetails.user.role" name="role"></ion-input>
         </ion-item>
 
-        <ion-item>
+        <ion-item hidden>
           <ion-label color="light" floating>Valo Host</ion-label>
           <ion-input type="text" [(ngModel)]="userDetails.valoDetails.host" name="host"></ion-input>
         </ion-item>
 
-        <ion-item>
+        <ion-item hidden>
           <ion-label color="light" floating>Valo Port</ion-label>
           <ion-input type="text" [(ngModel)]="userDetails.valoDetails.port" name="port"></ion-input>
         </ion-item>
 
-        <ion-item>
+        <ion-item hidden>
           <ion-label color="light" floating>Valo Tenant</ion-label>
           <ion-input type="text" [(ngModel)]="userDetails.valoDetails.tenant" name="tenant"></ion-input>
         </ion-item>
 
-        <ion-item>
+        <ion-item hidden>
           <ion-label color="light" floating>Stream Collection</ion-label>
           <ion-input type="text" [(ngModel)]="userDetails.valoDetails.collection" name="collection"></ion-input>
         </ion-item>
 
-        <ion-item>
+        <ion-item hidden>
           <ion-label color="light" floating>Location Stream</ion-label>
           <ion-input type="text" [(ngModel)]="userDetails.valoDetails.location" name="location"></ion-input>
         </ion-item>

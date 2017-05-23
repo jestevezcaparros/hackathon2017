@@ -8,11 +8,11 @@
 */
 
 import AttendersOverlayView from './attenders/overlay';
-import IotOverlayView from './iot/overlay';
+// import IotOverlayView from './iot/overlay';
 
 // Favor string constants rather nunmeric for debugging purposes
 export const ATTENDERS_OVERLAYVIEW = 'ATTENDERS_OVERLAYVIEW';
-export const IOT_OVERLAYVIEW = 'IOT_OVERLAYVIEW';
+// export const IOT_OVERLAYVIEW = 'IOT_OVERLAYVIEW';
 
 /**
 * Wraps the overlay views into a simple factory to enforce
@@ -29,9 +29,9 @@ export function create(type, map) {
     case 'ATTENDERS_OVERLAYVIEW':
       _instance = new AttendersOverlayView(map);
       break;
-    case 'IOT_OVERLAYVIEW':
-      _instance = new IotOverlayView(map);
-      break;
+    // case 'IOT_OVERLAYVIEW':
+    //   _instance = new IotOverlayView(map);
+    //   break;
     default: throw Error('Overlay View type not implemented')
   }
   return _instance;
