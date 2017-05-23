@@ -90,8 +90,6 @@ export class RegistrationPage {
 
 
 
-
-
   // Let's define here a schema storing location information
   // We'll be using this stream for capturing user locations when the app is open
   LOCATION_SCHEMA = {
@@ -191,7 +189,6 @@ export class RegistrationPage {
       () => {
         this.checkAndCreateContributorType(this.MOBILE_USER_CONTRIBUTOR);
         this.registerContributor();
-        // this.checkAndCreateStream(this.SKILL_SCHEMA, this.userDetails.valoDetails.skill);
         this.checkAndCreateStream(this.LOCATION_SCHEMA, this.userDetails.valoDetails.location);
         this.toastCtrl.create({
           message: "Details saved",
