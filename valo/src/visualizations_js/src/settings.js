@@ -6,6 +6,7 @@
  * @author Andres Ramirez <aramirez@itrsgroup.com>
  * @author Zuri Pabón <zpabon@itrsgroup.com>
  * @author Danilo Rossi <drossi@itrsgroup.com>
+ * @author José Ángel Morell <ja2m_@hotmail.com>
  * @author (Each contributor append a line here)
  */
 export const DEBUG = false;
@@ -100,19 +101,17 @@ export const LA_TERMICA_COORDINATES = {
 export const MAP_OPTIONS = {
     zoom: 20,
     disableDefaultUI: true,
-    backgroundColor: "#bbb",
+    //backgroundColor: "#bbb",
     // backgroundColor: "#ffffff",    
-    draggable: false,
-    //scrollwheel: false,
+    //draggable: false,
+    scrollwheel: false,
     navigationControl: false,
     mapTypeControl: false,
     scaleControl: false,
-    //minZoom: 18,
-    //maxZoom: 20,
+    minZoom: 18,
+    maxZoom: 20,
     center: LA_TERMICA_COORDINATES,
     styles: 
-
-
     [
     {
         "elementType": "labels",
@@ -122,44 +121,6 @@ export const MAP_OPTIONS = {
             }
         ]
     }]
-
-
-//     styles: 
-
-
-//     [
-//     {
-//         "elementType": "labels",
-//         "stylers": [
-//             {
-//                 "visibility": "off"
-//             }
-//         ]
-//     },
-//     {
-//         "featureType": "all",
-//         "elementType": "all",
-
-//         "stylers": [
-//             {
-//                 "invert_lightness": false
-//             },
-//             {
-//                 "saturation": 0
-//             },
-//             {
-//                 "lightness": 0
-//             },
-//             {
-//                 "gamma": 0.5
-//             },
-//             {
-//                 "hue": "#000000"
-//             }
-
-//         ]
-//     }
-// ]
 };
 
 
@@ -369,7 +330,7 @@ export const POLYGON_ROOM_STYLE = {
     strokeColor: 'rgba(27, 217, 221, 0)',
     strokeOpacity: 1,
     strokeWeight: 2,
-    fillColor: 'rgba(27, 217, 221, .3)',
+    fillColor: '#FFFFFF',
     fillOpacity: 1
 }
 

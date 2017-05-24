@@ -5,6 +5,7 @@
 * @license MIT
 * @author Andres Ramirez <aramirez@itrsgroup.com>
 * @author Zuri Pabón <zpabon@itrsgroup.com>
+* @author José Ángel Morell <ja2m_@hotmail.com>
 * @author (Each contributor append a line here)
 */
 
@@ -112,13 +113,19 @@ export default class AttendersOverlayView extends OverlayView {
           let php=polygonStore[i].php;
           let total=java+js+python+php;
           if (java>js && java>python && java>php){
-            polygonStore[i].setOptions({strokeWeight: 2.0, fillColor: '#FFC400', fillOpacity: java/total});
+            let op=(java/total)-0.1;
+            polygonStore[i].setOptions({strokeWeight: 2.0, fillColor: '#FFC400', fillOpacity: op<0.1? op=0.1 :op=op });
           }else if (js>java && js>python && js>php){
-            polygonStore[i].setOptions({strokeWeight: 2.0, fillColor: '#DEFF00', fillOpacity: js/total});
+            let op=(js/total)-0.1;            
+            polygonStore[i].setOptions({strokeWeight: 2.0, fillColor: '#DEFF00', fillOpacity: op<0.1? op=0.1 :op=op });
           }else if (python>java && python>js && python>php){
-            polygonStore[i].setOptions({strokeWeight: 2.0, fillColor: '#FF00FF', fillOpacity: python/total});
+            let op=(python/total)-0.1;            
+            polygonStore[i].setOptions({strokeWeight: 2.0, fillColor: '#FF00FF', fillOpacity: op<0.1? op=0.1 :op=op });
           }else if (php>java && php>js && php>python){
-            polygonStore[i].setOptions({strokeWeight: 2.0, fillColor: '#0033FF', fillOpacity: php/total});
+            let op=(php/total)-0.1;            
+            polygonStore[i].setOptions({strokeWeight: 2.0, fillColor: '#0033FF', fillOpacity: op<0.1? op=0.1 :op=op });
+          }else if (total>0){
+            polygonStore[i].setOptions({strokeWeight: 2.0, fillColor: '#B5B5B5', fillOpacity: 1});            
           }else {
             polygonStore[i].setOptions({strokeWeight: 2.0, fillColor: '#FFFFFF', fillOpacity: 1});            
           }

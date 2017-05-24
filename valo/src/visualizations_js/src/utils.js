@@ -51,8 +51,8 @@ export function printLog(...args){
 function iconSizeFromZoomLevel(zoomLevel){
   switch(zoomLevel){
     case 18: return 14;
-    case 19: return 24;
-    case 20: return 30;
+    case 19: return 17;
+    case 20: return 20;
     default: return 30;
   }
 }
@@ -119,7 +119,7 @@ export function createMap({domElement, options}) {
             if (infowindows[p]==null){
               let infowindow = new google.maps.InfoWindow({
                 content: "<p>"+p+"</p>"+
-                         "<p>"+map.points[p].typeOfParticipant+"</p>"+
+                         "<p>"+map.points[p].skill+"</p>"+
                          "<p>"+map.points[p].country+"</p>", 
                 position: evt.latLng
               });

@@ -7,6 +7,7 @@
  * @author Danilo Rossi <drossi@itrsgroup.com>
  * @author Andres Ramirez <aramirez@itrsgroup.com>
  * @author Zuri Pabón <zpabon@itrsgroup.com>
+ * @author José Ángel Morell <ja2m_@hotmail.com>
  */
 
 import MapPoint from './map_point';
@@ -28,7 +29,6 @@ import MapPoint from './map_point';
    }  
  }
 
-
 var attenders={};
 
  /**
@@ -48,13 +48,9 @@ var attenders={};
       );
       attenders[id].country=valoPayload.country;
       attenders[id].typeOfParticipant=valoPayload.typeOfParticipant;
-   //   return attenders[id];
   }else {
     attenders[id].latitude=valoPayload.position.latitude;
     attenders[id].longitude=valoPayload.position.longitude;    
-   //   return attenders[id];
   }
-
-  //  console.log("VAMOS A DEVOLVER "+JSON.stringify(attenders))
    return attenders;
  }
