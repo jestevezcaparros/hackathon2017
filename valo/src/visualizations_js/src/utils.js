@@ -5,6 +5,7 @@
  * @license MIT
  * @author Andres Ramirez <aramirez@itrsgroup.com>
  * @author Zuri Pabón <zpabon@itrsgroup.com>
+ * @author José Ángel Morell <ja2m_@hotmail.comy>
  * @author (Each contributor append a line here)
  */
 
