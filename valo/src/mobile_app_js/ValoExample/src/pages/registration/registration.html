@@ -1,4 +1,3 @@
-
   <ion-content>
 
     <header class="header">
@@ -15,32 +14,15 @@
           <ion-input type="text" [(ngModel)]="userDetails.user.name" name="name"></ion-input>
         </ion-item>
 
-        <!--<ion-item>
-          <ion-label color="light" floating>Gender</ion-label>
-          <ion-select [(ngModel)]="userDetails.user.gender" name="gender">
-            <ion-option value="male">Male</ion-option>
-            <ion-option value="female">Female</ion-option>
-          </ion-select>
-        </ion-item>-->
-
-
-
-        <ion-item>       
+        <ion-item>
           <ion-label color="light" floating>Skill Stream</ion-label>
-          <ion-select [(ngModel)]="userDetails.user.gender" name="gender">      
-              <!--<option value="" style="display: none"></option>           
-              <ion-option  *ngFor="let c of skills; let i = index"  value="{{i}}">{{c}}</ion-option>  -->
- 
+          <ion-select [(ngModel)]="userDetails.user.gender" name="gender">
               <ion-option value="male">Java</ion-option>
               <ion-option value="javascript">JavaScript</ion-option>
               <ion-option value="python">Python</ion-option>
               <ion-option value="php">PHP</ion-option>
-          </ion-select>     
+          </ion-select>
         </ion-item>
-
-
-
-
 
         <ion-item>
           <ion-label color="light" floating>Type of Participant</ion-label>
@@ -93,8 +75,6 @@
           <ion-input type="text" [(ngModel)]="userDetails.valoDetails.location" name="location"></ion-input>
         </ion-item>
 
-
-
       </ion-list>
 
       <ion-fab right edge>
@@ -105,3 +85,4 @@
     <div class="clear"></div>
 
   </ion-content>
+  
