@@ -24,7 +24,11 @@ import {
 // 
 // Philips Hue
 //
-const HUE_HOST = "192.168.1.34";
+//const HUE_HOST = "192.168.1.34";
+//const HUE_HOST = "192.168.0.115";
+//const HUE_HOST = "192.168.0.118";
+//const HUE_HOST = "192.168.0.101";
+const HUE_HOST = "192.168.0.136";
 const HUE_USER = "Odw-QQ0AxXDObwFjoX5KpeocXORnk6jjNieUirFq";
 const HUE_URI_PREFIX = `http://${HUE_HOST}`;
 const BULB1 = '1';
@@ -60,7 +64,7 @@ select count()/60.0 as tweetsPerSecond
 //
 // Map tweet rate (tweets per second) to a color (hue)
 //
-const RATE_MAX = 8.0; // Tweets/second
+const RATE_MAX = 1.0; // Tweets/second
 function mapTweetRateToHue(rate) {
     // Linear (inverse) mapping
     // Map blue (hue 46920) to 0 Tweets/second

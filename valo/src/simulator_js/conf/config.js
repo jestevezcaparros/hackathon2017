@@ -176,6 +176,7 @@ const contributors = [
             accRandomGenerator : accGeneratorIotBoard
         }
     },
+    /*
     {
         id : "fake-board-00003",
         contributorType: "iot_board",
@@ -195,6 +196,7 @@ const contributors = [
             accRandomGenerator : accGeneratorIotBoard
         }
     },
+    */
     {
         id : "fake-board-00004",
         contributorType: "iot_board",
@@ -223,7 +225,7 @@ const contributors = [
             "id" : "fake-mobile-user-00001",
             "user" : {
                 "name" : "fake-mobile-user-00001",
-                "typeOfParticipant" : "fake organizer",
+                "typeOfParticipant" : "organizer",
                 "company" : "FAKE",
                 "country" : "Spain",
                 "role" : "Developer"
@@ -238,7 +240,7 @@ const contributors = [
             "id" : "fake-mobile-user-00002",
             "user" : {
                 "name" : "fake-mobile-user-00002",
-                "typeOfParticipant" : "fake speaker",
+                "typeOfParticipant" : "speaker",
                 "company" : "FAKE",
                 "country" : "Spain",
                 "role" : "Developer"
@@ -253,7 +255,7 @@ const contributors = [
             "id" : "fake-mobile-user-00003",
             "user" : {
                 "name" : "fake-mobile-user-00003",
-                "typeOfParticipant" : "fake attendee",
+                "typeOfParticipant" : "attendee",
                 "company" : "FAKE",
                 "country" : "Spain",
                 "role" : "Developer"
@@ -268,7 +270,7 @@ const contributors = [
             "id" : "fake-mobile-user-00004",
             "user" : {
                 "name" : "fake-mobile-user-00004",
-                "typeOfParticipant" : "fake gatecrasher",
+                "typeOfParticipant" : "gatecrasher",
                 "company" : "FAKE",
                 "country" : "Spain",
                 "role" : "Developer"
@@ -449,7 +451,7 @@ async function onTickIotBoard(
                 "longitude" : position.x,
                 "latitude" : position.y
             },
-            "alcohol" :  Math.random(), //TODO - Fix range
+            "alcohol" :  ~~(Math.random()*1000), //TODO - Fix range
             "units" : "%"
         };
         //console.log(alcoholEvt);

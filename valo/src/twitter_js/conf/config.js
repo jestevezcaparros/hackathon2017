@@ -783,7 +783,10 @@ const valoSchemas = {
 const mappings = [
     {
         "twitterClientConfig" : twitterClientConfigs.twitter1,
-        "twitterTrack" : "javascript, python",
+        //"twitterTrack" : "javascript, python",
+        //"twitterTrack" : "jotb17, hackathon",
+        "twitterTrack" : "jotb17",
+        //"twitterTrack" : "trump, donald",
         "destinationType" : "valo",
         "valoClient" : valoClientConfigs.valo1,
         "valoTenant" : "demo",

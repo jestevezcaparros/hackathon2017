@@ -23,7 +23,8 @@ const valoClientConfigs = {
 
 const mqttClientConfigs = {
    mqtt1 : {
-        host : 'iot.eclipse.org',
+        //host : 'iot.eclipse.org',
+        host : '192.168.0.137',
     }
 };
 
