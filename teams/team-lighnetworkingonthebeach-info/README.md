@@ -2,8 +2,8 @@
 
 ## Team members
 - [Cristóbal González](https://twitter.com/cristobalgp)
-- [Kevin Kalish](https://twitter.com/jose_angel_prog)
-- Jose Morell
+- Kevin Kalish
+- [José Ángel Morell](https://twitter.com/jose_angel_prog)
 - Joaquín Terrasa
 
 ## Source of the project
