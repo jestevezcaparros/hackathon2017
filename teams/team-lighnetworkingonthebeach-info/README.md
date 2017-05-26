@@ -5,11 +5,12 @@ Cristóbal González
 Kevin Kalish
 Jose Morell
 Joaquín Terrasa
+```
 
-Link to slides/presentation assets:
+# Link to slides/presentation assets:
 Presentation is in this same folder. Ligh Networking.pptx
 
-Use case description:
+# Use case description:
 - In our project, we´ve changed the demo of VALO to show the skill of each attendee instead of the happiness.
 - In Ionic app you can introduce your skill so it can be showed at the map.
 - In the visualization map, you can see icons showing the skill selected by each attendee.
@@ -19,4 +20,4 @@ Use case description:
  are loaded into the map to show where is each attendee and what´s the skill.
 - You can click on any attendee to see the information that was introduced on the mobile app. 
 - We add also some code to light Philips Vue bulbs depending on the skill. This code is not yet conected to events in VALO.
-``` 
+ 
