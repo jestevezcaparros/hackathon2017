@@ -101,19 +101,15 @@ export const LA_TERMICA_COORDINATES = {
 export const MAP_OPTIONS = {
     zoom: 20,
     disableDefaultUI: true,
-    //backgroundColor: "#bbb",
-    // backgroundColor: "#ffffff",    
-    //draggable: false,
-    scrollwheel: false,
+    scrollwheel: true,
     navigationControl: false,
     mapTypeControl: false,
     scaleControl: false,
-    minZoom: 18,
-    maxZoom: 20,
+    minZoom: 16,
+    maxZoom: 22,
     center: LA_TERMICA_COORDINATES,
-    styles: 
-    [
-    {
+    styles:
+    [{
         "elementType": "labels",
         "stylers": [
             {

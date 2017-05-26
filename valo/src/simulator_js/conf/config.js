@@ -228,7 +228,6 @@ const contributors = [
                 "company" : "VALO.io",
                 "country" : "Spain",
                 "role" : "Developer",
-                "skill" : "Java",
                 "gender" : "javascript"                               
             }
         },
@@ -245,8 +244,8 @@ const contributors = [
                 "company" : "VALO.io",
                 "country" : "Spain",
                 "role" : "Developer",
-                "skill" : "Python",
-                "gender" : "java"                                     
+                "gender" : "java"
+
             }
         },
         walkerData : walkerDataConfigs.walkerMobileDefault
@@ -262,7 +261,6 @@ const contributors = [
                 "company" : "VALO.io",
                 "country" : "Spain",
                 "role" : "Developer",
-                "skill" : "JavaScript",
                 "gender" : "python"                                         
             }
         },
@@ -279,7 +277,6 @@ const contributors = [
                 "company" : "VALO.io",
                 "country" : "Spain",
                 "role" : "Developer",
-                "skill" : "Data Science" ,
                 "gender" : "php"                                        
             }
         },
