@@ -2,9 +2,12 @@
 
 ## Team members
 - [Cristóbal González](https://twitter.com/cristobalgp)
-- Kevin Kalish
+- [Kevin Kalish](https://twitter.com/jose_angel_prog)
 - Jose Morell
 - Joaquín Terrasa
+
+## Source of the project
+
 
 ## Link to slides/presentation assets:
 Presentation is in this same folder. Ligh Networking.pptx
