@@ -3,10 +3,10 @@
 ```
 Team name: Light Networking (on the beach)
 Team members: 
-[Cristóbal González](http://twitter.com/cristobalgp)
-Kevin Kalish
-Jose Morell
-Joaquín Terrasa
+- [Cristóbal González](https://twitter.com/cristobalgp)
+- Kevin Kalish
+- Jose Morell
+- Joaquín Terrasa
 ```
 
 # Link to slides/presentation assets:
