@@ -1,15 +1,15 @@
 # Project Light Networking (on the beach)
 
-# Team members
+## Team members
 - [Cristóbal González](https://twitter.com/cristobalgp)
 - Kevin Kalish
 - Jose Morell
 - Joaquín Terrasa
 
-# Link to slides/presentation assets:
+## Link to slides/presentation assets:
 Presentation is in this same folder. Ligh Networking.pptx
 
-# Use case description:
+## Use case description:
 - In our project, we´ve changed the demo of VALO to show the skill of each attendee instead of the happiness.
 - In Ionic app you can introduce your skill so it can be showed at the map.
 - In the visualization map, you can see icons showing the skill selected by each attendee.
