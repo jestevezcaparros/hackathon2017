@@ -1,13 +1,10 @@
 # Project Light Networking (on the beach)
 
-```
-Team name: Light Networking (on the beach)
-Team members: 
+# Team members
 - [Cristóbal González](https://twitter.com/cristobalgp)
 - Kevin Kalish
 - Jose Morell
 - Joaquín Terrasa
-```
 
 # Link to slides/presentation assets:
 Presentation is in this same folder. Ligh Networking.pptx
