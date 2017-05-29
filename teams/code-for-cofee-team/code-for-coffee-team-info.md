@@ -9,7 +9,7 @@
 
 ### Links  
 
-- https://github.com/aluzardo/hackathon2017/tree/master/teams/code-for-coffee-team/slides/jonthebeachCodeForCoffee.pptx
+- [slides](./slides/jonthebeachCodeForCoffee.pptx)
 
 ### Use case description
 

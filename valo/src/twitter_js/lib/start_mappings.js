@@ -59,6 +59,7 @@ async function startMapping(mapping) {
             access_token_secret
         },
         twitterTrack,
+	twitterFollow,
         destinationType,
 
         valoClient : {host: valoHost, port: valoPort},
@@ -149,7 +150,7 @@ async function startMapping(mapping) {
         //
         const observable = twitter.getStreamingStatusesFilter(
             twitterClient,
-            {track: twitterTrack}
+            {track: twitterTrack, follow: twitterFollow}
         );
         observable.subscribe(
             async evt => {

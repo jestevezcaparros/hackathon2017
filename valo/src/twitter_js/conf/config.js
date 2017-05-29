@@ -784,6 +784,7 @@ const mappings = [
     {
         "twitterClientConfig" : twitterClientConfigs.twitter1,
         "twitterTrack" : "@jotbhelp",
+        "twitterFollow" : "88888888888888888", //TODO: use a valid twitter ID to follow the right account
         "destinationType" : "valo",
         "valoClient" : valoClientConfigs.valo1,
         "valoTenant" : "demo",
