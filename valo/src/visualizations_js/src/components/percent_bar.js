@@ -14,7 +14,7 @@ export default function(domElement) {
   // </div>
   //
 
-  const progressContainer = document.createElement('div');
+  /*const progressContainer = document.createElement('div');
   ['ui', 'indicating', 'progress', 'small'].forEach( className => progressContainer.classList.add(className) );
 
   const iconsContainer = document.createElement('div');
@@ -42,20 +42,19 @@ export default function(domElement) {
   progressContainer.appendChild(bar);
   progressContainer.appendChild(label);
 
-  domElement.appendChild(progressContainer);
+  domElement.appendChild(progressContainer);*/
 
-  $(progressContainer).progress({
+/*  $(progressContainer).progress({
     percent: 0
-  });
+  });*/
 
   return {
     currentAvg: null,
     group: null,
     init: function(groupAverage, { leftIcon = '', centerIcon = '', rightIcon = '' }) {
-
       this.currentAverage = groupAverage.average;
-      this.group = groupAverage.group;
-      label.textContent = this.group;
+      /*this.group = groupAverage.group;
+      label.textContent = 'Number of issues';
 
       const icons = {
         iLeft: leftIcon || '',
@@ -87,18 +86,19 @@ export default function(domElement) {
         })
         right.style.float = 'right';
         iconsContainer.appendChild(right);
-      }
-
-      $(progressContainer).progress({
+      }*/
+        $('#issues-value').text(this.currentAverage);
+/*      $(progressContainer).progress({
         percent: this.currentAverage
-      });
+      });*/
       return this;
     },
     updateAvg: function(avg) {
       this.currentAverage = avg;
-      $(progressContainer).progress({
+      $('#issues-value').text(this.currentAverage);
+/*      $(progressContainer).progress({
         percent: this.currentAverage
-      });
+      });*/
       return this;
     }
   };

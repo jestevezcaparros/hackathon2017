@@ -33,7 +33,7 @@ export default function(domElement) {
   //   </div>
   // </div>
 
-  const wrapper = document.createElement('div');
+ /* const wrapper = document.createElement('div');
   wrapper.classList.add('wrapper');
 
   const ui_grid = document.createElement('div');
@@ -94,13 +94,13 @@ export default function(domElement) {
 
   ui_grid.appendChild(leftColumn);
   ui_grid.appendChild(rightColumn);
-  wrapper.appendChild(ui_grid);
-  domElement.appendChild(wrapper);
+  wrapper.appendChild(ui_grid);*/
+  //domElement.appendChild(wrapper);
 
   return {
 
-    show(tweet) {
-      let hours = (new Date()).getHours();
+    add(tweet) {
+      /*let hours = (new Date()).getHours();
       hours = (hours<10)?"0"+hours:hours;
       let minutes = (new Date()).getMinutes();
       minutes = (minutes<10)?"0"+minutes:minutes;
@@ -108,12 +108,24 @@ export default function(domElement) {
       tweetName.textContent = tweet.name;
       tweetScreenName.textContent = "@"+tweet.screen_name;
       tweetText.textContent = tweet.text;
-      liveInText.textContent = "LIVE IN #JOTB17";
+
+      liveInText.textContent = "LIVE IN @JOTBHELP";
       time.textContent = `${hours}:${minutes}`;
 
       avatarImg.src = tweet.profile_image_url_https;
       redWave.src = "./src/images/red-wave.png";
-      blueWave.src = "./src/images/blue-wave.png";
+      blueWave.src = "./src/images/blue-wave.png";*/
+
+
+        const table = domElement.getElementsByTagName('tbody')[0];
+        // Create an empty <tr> element and add it to the 1st position of the table:
+        const row = table.insertRow(0);
+
+       // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
+        let cell1 = row.insertCell(0);
+
+       // Add some text to the new cells:
+        cell1.innerHTML = '<h4 class="ui image header"><img class="avatar-img ui rounded image" src="'+tweet.profile_image_url_https+'"><div class="content">'+tweet.name+'<div class="sub header">'+tweet.text+'</div></div></h4>';
     }
 
   };

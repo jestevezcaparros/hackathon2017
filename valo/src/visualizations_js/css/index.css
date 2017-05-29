@@ -114,13 +114,13 @@ svg {
 .tweet-container {
   z-index: 1;
   position: absolute;
-  bottom: 35px;
-  left: 0px;
+  top: 50px;
+  left: 50px;
   width: 100%;
 }
   .wrapper {
     width: 90%;
-    margin: 0 auto;
+    margin: auto;
   }
     .user-container,
     .tweet-text {

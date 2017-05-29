@@ -47,17 +47,17 @@ import {
     let tweetBoxComponent = null;
 
     // This creates a google Maps Api v3 instance rendering the map
-    const map = JotbMap({
-      domElement: document.querySelector(MAP_CONTAINER_CSS_SELECTOR),
-      options: MAP_OPTIONS
-    });
+    // const map = JotbMap({
+    //   domElement: document.querySelector(MAP_CONTAINER_CSS_SELECTOR),
+    //   options: MAP_OPTIONS
+    // });
 
     // utility function
     const getNextBarChartContainer = function() {
-      var chartContainer = document.createElement('div');
-      chartContainer.classList.add('avg-chart-container');
-      document.querySelector('.avg-container').appendChild(chartContainer);
-      return chartContainer;
+      //var chartContainer = document.createElement('div');
+      //chartContainer.classList.add('avg-chart-container');
+      //document.querySelector('.avg-container').appendChild(chartContainer);
+      return null;
     }
 
     document.querySelector('#top-menu-about').addEventListener('click', function(event) {
@@ -68,16 +68,15 @@ import {
     TweetDAO.readTweets((err, valoPayload) => {
       console.log('valoPayload', valoPayload)
       // (create twitter box component)
-      tweetBoxComponent = tweetBoxComponent || tweetBox(document.querySelector('.tweet-container'));
+      tweetBoxComponent = tweetBoxComponent || tweetBox(document.querySelector('#issues'));
 
       // show tweet in the UI
-      tweetBoxComponent.show( TweetVO.createTweet(valoPayload) );
+      tweetBoxComponent.add( TweetVO.createTweet(valoPayload) );
 
     })
 
     // read average by contributor
     MobileDAO.readAverageHappinesEvents((err, valoPayload) => {
-
       // create a GroupAverage element
       const groupAverage = GroupVO.createGroupAverage(valoPayload);
 
@@ -88,9 +87,9 @@ import {
         const chart =
           percentBar(getNextBarChartContainer())
           .init(groupAverage, {
-            leftIcon: 'red frown icon',
-            centerIcon: 'yellow meh icon',
-            rightIcon: 'green smile icon'
+            leftIcon: '',
+            centerIcon: '',
+            rightIcon: ''
           });
 
         // store it
