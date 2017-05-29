@@ -7,6 +7,7 @@
  * @author Danilo Rossi <drossi@itrsgroup.com>
  * @author Andres Ramirez <aramirez@itrsgroup.com>
  * @author Zuri Pabón <zpabon@itrsgroup.com>
+ * @author José Ángel Morell <ja2m_@hotmail.com>
  */
 
 import MapPoint from './map_point';
@@ -20,27 +21,15 @@ import MapPoint from './map_point';
   * Represents an attender point for google maps
   */
  class AttenderPoint extends MapPoint {
-   constructor(latitude, longitude, icon) {
+   constructor(id,latitude, longitude, icon) {
      super(latitude, longitude);
+     this.id=id;
      this.icon = `${ICON_URL}${icon}.svg`;
-   }
+     this.skill=icon;
+   }  
  }
 
- /**
-  * Create a valid AttenderPoint given an event from Valo mobile location stream
-  * @method createLocationAttenderPoint
-  * @param  {Object}                valoPayload   A mob_location Valo stream event
-  * @return {AttenderPoint}                            A valid AttenderPoint
-  */
- export function createLocationAttenderPoint(valoPayload){
-   return new AttenderPoint(
-     valoPayload.position.latitude,
-     valoPayload.position.longitude,
-     valoPayload.typeOfParticipant ?
-     `footprints-${valoPayload.typeOfParticipant.toLowerCase()}` :
-     `footprints`
-   );
- }
+var attenders={};
 
  /**
   * Create a valid MapPoint given an event from Valo mobile happiness stream
@@ -49,9 +38,19 @@ import MapPoint from './map_point';
   * @return {AttenderPoint}                            A valid AttenderPoint
   */
  export function createHappinessAttenderPoint(valoPayload){
-   return new AttenderPoint(
-     valoPayload.position.latitude,
-     valoPayload.position.longitude,
-     valoPayload.happiness
-   );
+   let id = valoPayload.contributor;
+   if (attenders[id]==null){
+      attenders[id]=new AttenderPoint(
+        valoPayload.id,
+        valoPayload.position.latitude,
+        valoPayload.position.longitude,
+        valoPayload.happiness
+      );
+      attenders[id].country=valoPayload.country;
+      attenders[id].typeOfParticipant=valoPayload.typeOfParticipant;
+  }else {
+    attenders[id].latitude=valoPayload.position.latitude;
+    attenders[id].longitude=valoPayload.position.longitude;    
+  }
+   return attenders;
  }

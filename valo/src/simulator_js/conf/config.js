@@ -10,6 +10,7 @@
  * @license MIT
  * @author Álvaro Santamaría Herrero <asantamaria@itrsgroup.com>
  * @author Zuri Pabón <zpabon@itrsgroup.com>
+ * @author José Ángel Morell <ja2m_@hotmail.com>
  * @author (Each contributor appends a line here)
  */
 import {
@@ -72,7 +73,7 @@ const valoClient = {
 // WALKERS - Acceleration generators for walkers
 ///////////////////////////////////////////////////////////////////////////////
 // Walker resolution
-const TUNE_THIS = 9; // Tune this param to adjust the size of the steps
+const TUNE_THIS = 6; // Tune this param to adjust the size of the steps
 const WALKER_RESOLUTION = 0.000000001 * TUNE_THIS * 1 / GRID_RESOLUTION;
 
 // Acceleration generators
@@ -217,65 +218,278 @@ const contributors = [
 
     // MOBILE USERS
     {
-        id : "fake-mobile-user-00001",
+        id : "skill-user-00001",
         contributorType: "mobile_user",
         valoData: {
-            "id" : "fake-mobile-user-00001",
+            "id" : "skill-user-00001",
             "user" : {
-                "name" : "fake-mobile-user-00001",
-                "typeOfParticipant" : "fake organizer",
-                "company" : "FAKE",
+                "name" : "skill-user-00001",
+                "typeOfParticipant" : "organizer",
+                "company" : "VALO.io",
                 "country" : "Spain",
-                "role" : "Developer"
+                "role" : "Developer",
+                "gender" : "javascript"                               
             }
         },
         walkerData : walkerDataConfigs.walkerMobileDefault
     },
     {
-        id : "fake-mobile-user-00002",
+        id : "skill-mobile-user-00002",
         contributorType: "mobile_user",
         valoData: {
-            "id" : "fake-mobile-user-00002",
+            "id" : "skill-mobile-user-00002",
             "user" : {
-                "name" : "fake-mobile-user-00002",
-                "typeOfParticipant" : "fake speaker",
-                "company" : "FAKE",
+                "name" : "skill-mobile-user-00002",
+                "typeOfParticipant" : "speaker",
+                "company" : "VALO.io",
                 "country" : "Spain",
-                "role" : "Developer"
+                "role" : "Developer",
+                "gender" : "java"
+
             }
         },
         walkerData : walkerDataConfigs.walkerMobileDefault
     },
     {
-        id : "fake-mobile-user-00003",
+        id : "skill-mobile-user-00003",
         contributorType: "mobile_user",
         valoData: {
-            "id" : "fake-mobile-user-00003",
+            "id" : "skill-mobile-user-00003",
             "user" : {
-                "name" : "fake-mobile-user-00003",
-                "typeOfParticipant" : "fake attendee",
-                "company" : "FAKE",
+                "name" : "skill-mobile-user-00003",
+                "typeOfParticipant" : "attendee",
+                "company" : "VALO.io",
                 "country" : "Spain",
-                "role" : "Developer"
+                "role" : "Developer",
+                "gender" : "python"                                         
             }
         },
         walkerData : walkerDataConfigs.walkerMobileDefault
     },
     {
-        id : "fake-mobile-user-00004",
+        id : "skill-mobile-user-00004",
         contributorType: "mobile_user",
         valoData: {
-            "id" : "fake-mobile-user-00004",
+            "id" : "skill-mobile-user-00004",
             "user" : {
-                "name" : "fake-mobile-user-00004",
-                "typeOfParticipant" : "fake gatecrasher",
-                "company" : "FAKE",
+                "name" : "skill-mobile-user-00004",
+                "typeOfParticipant" : "gatecrasher",
+                "company" : "VALO.io",
                 "country" : "Spain",
-                "role" : "Developer"
+                "role" : "Developer",
+                "gender" : "php"                                        
             }
         },
         walkerData : walkerDataConfigs.walkerMobileDefault
     },
+    {
+        id : "skill-mobile-user-00005",
+        contributorType: "mobile_user",
+        valoData: {
+            "id" : "skill-mobile-user-00005",
+            "user" : {
+                "name" : "skill-mobile-user-00005",
+                "typeOfParticipant" : "gatecrasher",
+                "company" : "VALO.io",
+                "country" : "Spain",
+                "role" : "Developer",
+                "skill" : "Data Science" ,
+                "gender" : "java"                                        
+            }
+        },
+        walkerData : walkerDataConfigs.walkerMobileDefault
+    },
+    {
+        id : "skill-mobile-user-00006",
+        contributorType: "mobile_user",
+        valoData: {
+            "id" : "skill-mobile-user-00006",
+            "user" : {
+                "name" : "skill-mobile-user-00006",
+                "typeOfParticipant" : "gatecrasher",
+                "company" : "VALO.io",
+                "country" : "Spain",
+                "role" : "Developer",
+                "skill" : "Data Science" ,
+                "gender" : "javascript"                                        
+            }
+        },
+        walkerData : walkerDataConfigs.walkerMobileDefault
+    },
+    {
+        id : "skill-mobile-user-00007",
+        contributorType: "mobile_user",
+        valoData: {
+            "id" : "skill-mobile-user-00007",
+            "user" : {
+                "name" : "skill-mobile-user-00007",
+                "typeOfParticipant" : "gatecrasher",
+                "company" : "VALO.io",
+                "country" : "Spain",
+                "role" : "Developer",
+                "skill" : "Data Science" ,
+                "gender" : "python"                                        
+            }
+        },
+        walkerData : walkerDataConfigs.walkerMobileDefault
+    },
+    {
+        id : "skill-mobile-user-00008",
+        contributorType: "mobile_user",
+        valoData: {
+            "id" : "skill-mobile-user-00008",
+            "user" : {
+                "name" : "skill-mobile-user-00008",
+                "typeOfParticipant" : "gatecrasher",
+                "company" : "VALO.io",
+                "country" : "Spain",
+                "role" : "Developer",
+                "skill" : "Data Science" ,
+                "gender" : "php"                                        
+            }
+        },
+        walkerData : walkerDataConfigs.walkerMobileDefault
+    },            
+    {
+        id : "skill-mobile-user-00009",
+        contributorType: "mobile_user",
+        valoData: {
+            "id" : "skill-mobile-user-00009",
+            "user" : {
+                "name" : "skill-mobile-user-00009",
+                "typeOfParticipant" : "gatecrasher",
+                "company" : "VALO.io",
+                "country" : "Spain",
+                "role" : "Developer",
+                "skill" : "Data Science" ,
+                "gender" : "java"                                        
+            }
+        },
+        walkerData : walkerDataConfigs.walkerMobileDefault
+    },            
+    {
+        id : "skill-mobile-user-00010",
+        contributorType: "mobile_user",
+        valoData: {
+            "id" : "skill-mobile-user-00010",
+            "user" : {
+                "name" : "skill-mobile-user-00010",
+                "typeOfParticipant" : "gatecrasher",
+                "company" : "VALO.io",
+                "country" : "Spain",
+                "role" : "Developer",
+                "skill" : "Data Science" ,
+                "gender" : "javascript"                                        
+            }
+        },
+        walkerData : walkerDataConfigs.walkerMobileDefault
+    },            
+    {
+        id : "skill-mobile-user-00011",
+        contributorType: "mobile_user",
+        valoData: {
+            "id" : "skill-mobile-user-00011",
+            "user" : {
+                "name" : "skill-mobile-user-00011",
+                "typeOfParticipant" : "gatecrasher",
+                "company" : "VALO.io",
+                "country" : "Spain",
+                "role" : "Developer",
+                "skill" : "Data Science" ,
+                "gender" : "python"                                        
+            }
+        },
+        walkerData : walkerDataConfigs.walkerMobileDefault
+    },            
+    {
+        id : "skill-mobile-user-00012",
+        contributorType: "mobile_user",
+        valoData: {
+            "id" : "skill-mobile-user-00012",
+            "user" : {
+                "name" : "skill-mobile-user-00012",
+                "typeOfParticipant" : "gatecrasher",
+                "company" : "VALO.io",
+                "country" : "Spain",
+                "role" : "Developer",
+                "skill" : "Data Science" ,
+                "gender" : "php"                                        
+            }
+        },
+        walkerData : walkerDataConfigs.walkerMobileDefault
+    },                        
+    {
+        id : "skill-mobile-user-00013",
+        contributorType: "mobile_user",
+        valoData: {
+            "id" : "skill-mobile-user-00013",
+            "user" : {
+                "name" : "skill-mobile-user-00013",
+                "typeOfParticipant" : "gatecrasher",
+                "company" : "VALO.io",
+                "country" : "Spain",
+                "role" : "Developer",
+                "skill" : "Data Science" ,
+                "gender" : "javascript"                                        
+            }
+        },
+        walkerData : walkerDataConfigs.walkerMobileDefault
+    },
+    {
+        id : "skill-mobile-user-00014",
+        contributorType: "mobile_user",
+        valoData: {
+            "id" : "skill-mobile-user-00014",
+            "user" : {
+                "name" : "skill-mobile-user-00014",
+                "typeOfParticipant" : "gatecrasher",
+                "company" : "VALO.io",
+                "country" : "Spain",
+                "role" : "Developer",
+                "skill" : "Data Science" ,
+                "gender" : "javascript"                                        
+            }
+        },
+        walkerData : walkerDataConfigs.walkerMobileDefault
+    },
+    {
+        id : "skill-mobile-user-00015",
+        contributorType: "mobile_user",
+        valoData: {
+            "id" : "skill-mobile-user-00015",
+            "user" : {
+                "name" : "skill-mobile-user-00015",
+                "typeOfParticipant" : "gatecrasher",
+                "company" : "VALO.io",
+                "country" : "Spain",
+                "role" : "Developer",
+                "skill" : "Data Science" ,
+                "gender" : "python"                                        
+            }
+        },
+        walkerData : walkerDataConfigs.walkerMobileDefault
+    },
+    {
+        id : "skill-mobile-user-00016",
+        contributorType: "mobile_user",
+        valoData: {
+            "id" : "skill-mobile-user-00016",
+            "user" : {
+                "name" : "skill-mobile-user-00016",
+                "typeOfParticipant" : "gatecrasher",
+                "company" : "VALO.io",
+                "country" : "Spain",
+                "role" : "Developer",
+                "skill" : "Data Science" ,
+                "gender" : "python"                                        
+            }
+        },
+        walkerData : walkerDataConfigs.walkerMobileDefault
+    }            
+
+
+
+
 ];
 
 
@@ -312,8 +526,8 @@ async function onTickMobile (
     const STREAM_COLLECTION = "mobile";
     const STREAM_NAME_LOCATION = "location";
     const STREAM_NAME_HAPPINESS = "happiness";
-    const DEBOUNCE_TIME_LOCATION = 1000;
-    const DEBOUNCE_TIME_HAPPINESS = 5000;
+    const DEBOUNCE_TIME_LOCATION = 100000; //1000
+    const DEBOUNCE_TIME_HAPPINESS = 500; //5000
     const LIKELIHOOD_PUBLISHING_HAPPINESS = 0.5
 
     // Intervals in milliseconds

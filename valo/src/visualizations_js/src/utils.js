@@ -5,10 +5,17 @@
  * @license MIT
  * @author Andres Ramirez <aramirez@itrsgroup.com>
  * @author Zuri Pabón <zpabon@itrsgroup.com>
+ * @author José Ángel Morell <ja2m_@hotmail.comy>
  * @author (Each contributor append a line here)
  */
 
 import {
+  POLYGON_1,
+  POLYGON_2,
+  POLYGON_3,
+  POLYGON_4,
+  POLYGON_5,
+  POLYGON_6,    
   AUDITORIO_POLYGON,
   POLYGON_ROOM_STYLE,
   MOLLETE_POLYGON,
@@ -21,8 +28,10 @@ import {
 } from './settings'
 
 let iconStore = new Map();
-let polygonStore = new Array();
+export let polygonStore = new Array();
 let markerStore = new Array();
+
+
 
 export function getIcon(src){
   if(iconStore.has(src)) return iconStore.get(src);
@@ -42,22 +51,36 @@ export function printLog(...args){
 
 function iconSizeFromZoomLevel(zoomLevel){
   switch(zoomLevel){
-    case 18: return 8;
-    case 19: return 18;
-    case 20: return 24;
-    default: return 24;
+    case 18: return 14;
+    case 19: return 17;
+    case 20: return 20;
+    default: return 30;
   }
 }
 
-export function plotPoint(context, point, projection, zoomLevel=20) {
+var infowindows={}
+export function plotPoint(context, point, projection, zoomLevel=20,id) {
+
+     if (infowindows[id]!=null)infowindows[id].setPosition(point.geo);
     context.drawImage(
       getIcon(point.icon),
-      projection.fromLatLngToDivPixel(point.geo).x,
-      projection.fromLatLngToDivPixel(point.geo).y,
+      projection.fromLatLngToDivPixel(point.geo).x-iconSizeFromZoomLevel(zoomLevel)/2,
+      projection.fromLatLngToDivPixel(point.geo).y-iconSizeFromZoomLevel(zoomLevel)/2,
       iconSizeFromZoomLevel(zoomLevel),
       iconSizeFromZoomLevel(zoomLevel));
 }
 
+
+       function convertPoint(latLng,map) { 
+                  var 
+          topRight=map.getProjection().fromLatLngToPoint(map.getBounds().getNorthEast()); 
+                  var 
+          bottomLeft=map.getProjection().fromLatLngToPoint(map.getBounds().getSouthWest()); 
+                  var scale=Math.pow(2,map.getZoom()); 
+                  var worldPoint=map.getProjection().fromLatLngToPoint(latLng); 
+                  return new google.maps.Point((worldPoint.x- 
+          bottomLeft.x)*scale,(worldPoint.y-topRight.y)*scale); 
+       } 
 
  /**
  *
@@ -80,6 +103,34 @@ export function createMap({domElement, options}) {
     window.addEventListener('resize', ()=> map.fitBounds(bounds));
     drawRooms(map);
     map.fitBounds(bounds)
+
+
+    
+    map.points={};
+    google.maps.event.addListener(map, 'click', function(evt) {
+        let eventPoint=  convertPoint(evt.latLng,map);
+        console.log("evt = "+JSON.stringify(evt))
+        for(var p in map.points) {
+         let attenderPoint=convertPoint(map.points[p].geo,map);
+		     let width=iconSizeFromZoomLevel(map.getZoom());
+         let height=iconSizeFromZoomLevel(map.getZoom());         
+         if (eventPoint.x>=(attenderPoint.x-width/2) && ((attenderPoint.x-width/2)+width) &&
+            eventPoint.y>=(attenderPoint.y-width/2) && eventPoint.y<((attenderPoint.y-height/2)+height)
+         ){
+            if (infowindows[p]==null){
+              let infowindow = new google.maps.InfoWindow({
+                content: "<p>"+p+"</p>"+
+                         "<p>"+map.points[p].skill+"</p>"+
+                         "<p>"+map.points[p].country+"</p>", 
+                position: evt.latLng
+              });
+              infowindows[p]=infowindow;
+            }
+             infowindows[p].open(map);
+             return;
+         }       
+        }        
+    });
     return map;
 }
 
@@ -96,15 +147,21 @@ function updateMap(map) {
 
 function drawRooms(map){
   // CREATE LA TERMICA ROOMS POLYGON
-  addPolygon(map, AUDITORIO_POLYGON, POLYGON_ROOM_STYLE);
-  addPolygon(map, MOLLETE_POLYGON, POLYGON_ROOM_STYLE);
-  addPolygon(map, PITUFO_POLYGON, POLYGON_ROOM_STYLE);
-  addPolygon(map, ENTRANCE_POLYGON, POLYGON_ROOM_STYLE);
-  addPolygon(map, BATHROOM_POLYGON, POLYGON_BATHROOM_STYLE);
+  addPolygon(map, POLYGON_1, POLYGON_ROOM_STYLE,"POLYGON_1");  
+  addPolygon(map, POLYGON_2, POLYGON_ROOM_STYLE,"POLYGON_2");  
+  addPolygon(map, POLYGON_3, POLYGON_ROOM_STYLE,"POLYGON_3");   
+  addPolygon(map, POLYGON_4, POLYGON_ROOM_STYLE,"POLYGON_4");   
+  addPolygon(map, POLYGON_5, POLYGON_ROOM_STYLE,"POLYGON_5");        
+  addPolygon(map, POLYGON_6, POLYGON_ROOM_STYLE,"POLYGON_6");    
+  //addPolygon(map, AUDITORIO_POLYGON, POLYGON_ROOM_STYLE);
+  //addPolygon(map, MOLLETE_POLYGON, POLYGON_ROOM_STYLE);
+  //addPolygon(map, PITUFO_POLYGON, POLYGON_ROOM_STYLE);
+  //addPolygon(map, ENTRANCE_POLYGON, POLYGON_ROOM_STYLE);
+ // addPolygon(map, BATHROOM_POLYGON, POLYGON_BATHROOM_STYLE);
 }
 
 function drawMarkers(map){
-  // Add Icons
+  // // Add Icons
   // addMarker(map,
   //     `${ICON_URL}campero.svg`, {
   //     latitude: 36.689040,
@@ -134,10 +191,11 @@ function resetMarkers(){
   return true;
 }
 
-function addPolygon(map, coords, options = {}) {
-    const opt = Object.assign(options, {path: coords});
+function addPolygon(map, coords, options = {},id) {
+    const opt = Object.assign(options, {path: coords, clickable: false});
     const polygon = new google.maps.Polygon(opt);
     polygon.setMap(map);
+    polygon.id=id;
     polygonStore.push(polygon);
 }
 

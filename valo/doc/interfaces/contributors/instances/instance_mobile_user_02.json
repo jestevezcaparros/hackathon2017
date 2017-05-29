@@ -5,6 +5,8 @@
         "typeOfParticipant" : "SPEAKER",
         "company" : "MILLENNIUM",
         "country" : "Sweden",
-        "role" : "Hacker"
+        "role" : "Hacker",
+        "skill":"Data Scientist",
+        "gender":"javascript"              
     }
 }

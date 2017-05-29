@@ -19,6 +19,9 @@ import { retryOnConflict } from '../../../../../lib_js/valo_sdk_js/index';
 
 export class RegistrationPage {
 
+  skills: Array<String> = ["java","ruby","scala","php","python","javascript"];
+
+
   // Let's define some default application values
   // We want to be able to define the following:
   //  - mobile id
@@ -39,8 +42,7 @@ export class RegistrationPage {
       port: "",
       tenant: "",
       collection: "",
-      location: "",
-      happiness: ""
+      location: ""
     }
   }
 
@@ -48,8 +50,8 @@ export class RegistrationPage {
 
   DEFAULT_USER = {
     name: "Jon Snow",
-    gender: "male",
-    type: "gatecrasher",
+    gender: "java",
+    type: "attendee",
     company: "House Stark",
     country: "Winterfell",
     role: "King in the North"
@@ -60,8 +62,7 @@ export class RegistrationPage {
     port: "8888",
     tenant: "demo",
     collection: "mobile",
-    location: "location",
-    happiness: "happiness"
+    location: "location"
   }
 
   // Let's define here a schema for the mobile_user contributor type
@@ -80,45 +81,14 @@ export class RegistrationPage {
             "company": { "type": "string" },
             "role": { "type": "string" },
             "country": { "type": "string" },
-            "gender": { "type": "string" }
+            "gender": { "type": "string" }         
           }
         }
       }
     }
   }
 
-  // Let's define here a schema storing happiness and location information
-  // We'll be using this stream for capturing user ratings on the event, as well as their current location when they make the rating
-  HAPPINESS_SCHEMA = {
-    "schema": {
-      "version": "1.0",
-      "config": {},
-      "topDef": {
-        "type": "record",
-        "properties": {
-          "contributor": {
-            "type": "contributor", "definition": "mobile_user"
-          },
-          "timestamp": {
-            "type": "datetime",
-            "annotations": ["urn:itrs:default-timestamp"]
-          },
-          "position": {
-            "type": "record",
-            "properties": {
-              "latitude": { "type": "double" },
-              "longitude": { "type": "double" },
-              "altitude": { "type": "double" },
-              "accuracy": { "type": "double" },
-              "speed": { "type": "double" },
-              "heading": { "type": "double" }
-            }
-          },
-          "happiness": { "type": "int" }
-        }
-      }
-    }
-  }
+
 
   // Let's define here a schema storing location information
   // We'll be using this stream for capturing user locations when the app is open
@@ -152,6 +122,11 @@ export class RegistrationPage {
     }
   }
 
+
+
+
+
+
   // Define a default repository for streams; let's just use an SSR repository
   REPO_CONF_SSR = {
     "name": "ssr"
@@ -175,21 +150,31 @@ export class RegistrationPage {
             valoDetails: obj.valoDetails
           }
         } else {
-          this.userDetails = {
-            id: this.device.uuid ? this.device.uuid : this.DEFAULT_ID,
-            user: this.DEFAULT_USER,
-            valoDetails: this.DEFAULT_VALODETAILS
-          }
+          setTimeout(()=>{
+            this.userDetails = {
+              id: this.device.uuid ? this.device.uuid : this.DEFAULT_ID,
+              user: this.DEFAULT_USER,
+              valoDetails: this.DEFAULT_VALODETAILS
+            }   
+            this.userDetails.id=this.device.uuid ? this.device.uuid : this.DEFAULT_ID;
+            this.userDetails.user=this.DEFAULT_USER;
+            this.userDetails.valoDetails=this.DEFAULT_VALODETAILS;
+            this.userDetails.user.gender="javascript";
+
+          },1000);
+          
         }
+
       },
       error => {
         this.userDetails = {
           id: this.device.uuid ? this.device.uuid : this.DEFAULT_ID,
           user: this.DEFAULT_USER,
           valoDetails: this.DEFAULT_VALODETAILS
-        }
+        }        
       }
     );
+ 
   }
 
   // This function is called when the registration form is submitted
@@ -204,7 +189,6 @@ export class RegistrationPage {
       () => {
         this.checkAndCreateContributorType(this.MOBILE_USER_CONTRIBUTOR);
         this.registerContributor();
-        this.checkAndCreateStream(this.HAPPINESS_SCHEMA, this.userDetails.valoDetails.happiness);
         this.checkAndCreateStream(this.LOCATION_SCHEMA, this.userDetails.valoDetails.location);
         this.toastCtrl.create({
           message: "Details saved",

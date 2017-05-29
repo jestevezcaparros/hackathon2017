@@ -40,8 +40,14 @@ import {
 */
 export async function readHappinesEvents(callback){
   try {
-    const query = REPLAY ? HISTORICAL_QUERY_MOB_HAPPINESS : QUERY_MOB_HAPPINESS;
-    return readEvents(query, callback);
+    
+    const query = REPLAY ? HISTORICAL_QUERY_MOB_HAPPINESS : QUERY_MOB_HAPPINESS ;
+    
+    var r = readEvents(query, callback);
+
+
+    console.log("readHappinesEvents -> "+query)
+    return r;
   } catch (error) {
     printError(error);
     callback(error);
